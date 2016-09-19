@@ -1,8 +1,11 @@
 # Summary
 
-* [Introduction](README.md)
-* [1. Developing PIEs](developing-pies.md)
-    * [1.1 Introduction](11-introduction.md)
-* [2. Using PIEs](using-pies.md)
-* [test](test.md)
+- [Introduction](README.md)
+- [Developing PIEs](developing/developing-pies.md)
+ - [Summary](developing/summary.md)
+ - [Custom Element](developing/custom-element.md)
+ - [Controller](developing/controller.md)
+ - [Packaging](developing/packaging.md)
+- [Using PIEs](using/using-pies.md)
+
 
