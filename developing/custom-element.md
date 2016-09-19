@@ -4,7 +4,19 @@ The user interface for the PIE is provided in the browser by a [Custom Element](
 
 It should be defined in an ES6 module which is included as the main entry point the package (see [Packaging](packaging.md))
 
+```javascript
+export default class MyPie extends HTMLElement {
+
+  constructor() {
+    super();
+    this._model = null;
+    this._session = null;
+  }
+}
+```
+
 The Element receives properties that are set by the PIE Player, and may emit events to communicate out the Player.
+
 
 
 ### Properties

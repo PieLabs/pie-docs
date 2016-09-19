@@ -1,6 +1,6 @@
 # Summary
 
-- [Introduction](README.md)
+- [Introduction](introduction.md)
 - [Developing PIEs](developing/developing-pies.md)
  - [Summary](developing/summary.md)
  - [Custom Element](developing/custom-element.md)
