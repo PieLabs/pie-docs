@@ -5,14 +5,14 @@ Each PIE is a re-usable question/interaction-type.
 To define a question or interaction that uses one or more PIEs a user or authoring system creates a JSON and HTML file: 
 
 
-- **index.json** - Contains the definition and configuration for the PIEs used in the item.
+- **config.json** - Contains the definition and configuration for the PIEs used in the item.
 - **index.html** - Contains the PIE Custom Element declarations, and may position them within other html.
 
 To define the question these files are put in a directory which may also contain any assets that the PIE needs at runtime such as images or media.
 
 
 ```
-    index.json
+    config.json
     index.html
     picture-one.png
 ```
@@ -35,7 +35,7 @@ The pie object contains the following properties:
 
 Example:
 
-`index.json`
+`config.json`
 ```json
 {
     "pies": [
@@ -58,10 +58,10 @@ Example:
             ...
         }
     ],
-    "weight": {
-        "1":2,
-        "2":1
-    }
+    "weights": [
+        {"id":"1", weight: "2"},
+        {id:'2', weight: "1"}
+        ]
 }
 ```
 
@@ -83,21 +83,4 @@ Here is question one:
 Here is question two:
 <my-other-pie id="2"></my-other-pie>
 ```
-
-
-
-### Packaging a Question
-
-The `index.json` and `index.html` files, along with other assets such as media make up the basic definition of a question or set of questions that use PIEs.
-
-For this to be presented in a browser using the [PIE Player](pie-player.md) the Javascript code for rendering the PIE Custom Element and Controller logic needs to be assembled.
-
-When an item is _packaged_ with the [PIE Packaging tool](packaging-tool.md) the following JS files will be added to the directory:
-
-
-- **index.js** - Contains the JS for rendering the PIE Custom Elements defined in `index.json`, along with bundled dependencies.
-
-- **controllers.js** - Is a JS module containing the controllers for all PIEs defined in the `index.json`
-
-
 

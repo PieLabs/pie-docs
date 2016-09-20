@@ -12,7 +12,7 @@ Example:
 {
   "name": "my-pie",
   "version": "0.0.1",
-  "main": "dist/index.js",
+  "main": "dist/elements.js",
   "dependencies": {...},
   ...
 }
@@ -52,7 +52,7 @@ docs/
   schema.json
   demo/
     index.html
-    index.json
+    config.json
 ```
 
 #### README.md
