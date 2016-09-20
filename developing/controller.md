@@ -16,7 +16,7 @@ export function outcome(config, session, env) {
 }
 ```
 
-### Function: model()
+### Function: model(config, session, env)
 
 This function is used to set the `model` property on the PIE Element. 
 
@@ -38,9 +38,9 @@ TODO: discuss fixed props for  `lang`
 
 
 
-### Function: outcome()
+### Function: outcome(config, session, env)
 
-
+The outcome function provides a result of the users interaction with the PIE
 
 The model for the `outcome` should be:
 
