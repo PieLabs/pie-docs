@@ -7,7 +7,7 @@
  - [Packaging](developing/packaging.md)
  - [Environment](developing/environment.md)
 - Using PIEs
- - [PIE Format](using/pie-format.md)
+ - [Defining Questions](using/defining-questions.md)
  - [PIE Player](using/pie-player.md)
 
 
