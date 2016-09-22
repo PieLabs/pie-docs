@@ -34,6 +34,7 @@ The PIE should emit an event if this state changes due to user interaction in th
 ### Events
 
 
+
 ### React JS Example
 
 In this example React JS is used as the framework for developing the PIE.
@@ -52,18 +53,10 @@ export default class MyReactElement extends HTMLElement{
     this._model = null;
     this._session = null;
   }
-
-  get model(){
-    return this._model;
-  }
   
   set model(s){
     this._model = s;
     this._rerender();
-  }
-
-  get session(){
-    return this._session;
   }
   
   set session(s){
@@ -89,7 +82,7 @@ export default class MyReactElement extends HTMLElement{
 }
 
 ```
-
+> This example assumes a builder & transpiler is used to handle ES6 and framework specific file types.  
 
 ### Vue.js Example
 
@@ -104,19 +97,11 @@ export default class CorespringMultipleChoiceVueElement extends HTMLElement{
     this._session = null;
   }
 
-  get model(){
-    return this._model;
-  }
-  
   set model(s){
     this._model = s;
     this._rerender();
   }
 
-  get session(){
-    return this._session;
-  }
-  
   set session(s){
     this._session = s;
     this._rerender();
@@ -143,9 +128,8 @@ export default class CorespringMultipleChoiceVueElement extends HTMLElement{
   }
 
 }
-
-
 ```
+> This example assumes a builder & transpiler is used to handle ES6 and framework specific file types. 
 
 ### ES6 CustomElement Example
 

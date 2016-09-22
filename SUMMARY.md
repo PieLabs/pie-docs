@@ -9,7 +9,7 @@
 - Using PIEs
  - [Defining Questions](using/defining-questions.md)
  - [Packaging Questions](using/packaging-questions.md)
- - [PIE Player](using/pie-player.md)
+ - [Rendering Questions](using/rendering-questions.md)
 
 
 

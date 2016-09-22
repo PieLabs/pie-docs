@@ -1,31 +1,37 @@
 # Packaging Questions
 
-The `config.json` and `index.html` files, along with other assets such as media make up the basic definition of a question or set of questions that use PIEs.
 
-For this to be presented in a browser using the [PIE Player](pie-player.md) the Javascript code for rendering the PIE Custom Element and Controller logic needs to be assembled.
+The `config.json` and `index.html` files, along with other assets such as media files make up the basic definition of an Assessment Item (one or more questions and interactions that use PIEs).
 
-The [PIE Packaging tool](packaging-tool.md) will package and assemble the PIE code and its dependencies. When packaged, it adds the following javascript files to the item definition: `elements.js` and `controllers.js`
+For this Item to be presented in a browser the Javascript code for rendering the PIE Custom Elements and Controller logic needs to be assembled.
+
+The PIE project provides a [PIE Packaging tool](TODO-LINK) `pie-p` (pronounced 'pipe') that will package and assemble the PIE code and all dependencies and wrap them in a PIE Player for rendering. 
+
+>pie-p [item directory]
+
+When an Assessment Item is packaged the packaging tool adds the following javascript files to the item definition: `pie-player.js` and `controllers.js`
 
 
-#### `elements.js`
 
-This contains the JS for rendering the PIE Custom Elements defined in `config.json`, along with bundled dependencies.
-This script will register the PIE Custom Element in the document `document.registerElement('my-pie');`
+
+#### `pie-player.js`
+
+This contains the javascript for rendering the PIE Custom Elements defined in `config.json` and `index.html`, along with bundled and optimized dependencies.
+
+The script defines a `<pie-player>` Custom Element which will load the Assessment Item in HTML.
+
 
 #### `controllers.js`
 
-This script provides an object with a map containing the Controller for each PIE indexed with its defined name.
+This script provides access to the Controllers for each PIE indexed with its defined name, and  other methods for working with 
 
-This script can be loaded in the client with a `<script src="">` tag, or as a javascript module for server-side use.
+> See the [next section](pie-player.md) for how to use these assembled items in your system.
 
-It declares the object `pie_controllers` as a var in global scope for use when loaded as a script. 
+### Distributing Items
 
-It can also be imported as a module:
+When sharing Items between systems it is recommended that they be shared in their packaged form (including the basic definition and assets along with the assemled javascript code). The system receiving the items may choose to re-package if neccesary using the basic item definition.
 
-Example (ES6):
+Extra metadata that may (and should) be included with an Item is outside the scope of the PIE project itself.
 
-```javascript
-import PieControllers from "controllers"`
-PieControllers['my-pie'].model(config, session, env)
-```
+
 

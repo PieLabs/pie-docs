@@ -12,7 +12,7 @@ Example:
 {
   "name": "my-pie",
   "version": "0.0.1",
-  "main": "dist/elements.js",
+  "main": "dist/element.js",
   "dependencies": {...},
   ...
 }
