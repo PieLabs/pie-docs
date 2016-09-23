@@ -1,20 +1,38 @@
 ## Packaging
 
-PIEs are defined as NPM packages, and also provide best-practice format for including documentation and a  demonstration of your PIE.
+PIEs are defined as NPM packages, and as a best practice follow a structure for including documentation and a demonstration of the PIE.
 
 ## NPM Package
 
-All PIEs are made available as standard NPM packages. 
 
-Example:
+The following directory structure and files should be present in the package (and included when it is installed):
+
+
+```
+README.md
+package.json
+controller.js
+docs/
+  shema.json
+  demo/
+    index.html
+    config.json
+```
+
+> Additional directories and files may be added at the discretion of the developer, but care should be taken so that only necesssry files are indluded with the package using the `files` property in package.json and `.npmignore` file as necessary.
+
+The package definition is contained in `package.json` see [npm documentation](https://docs.npmjs.com/files/package.json) for full documentation on npm packages.
+
+Example Package.json:
 
 ```json
 {
   "name": "my-pie",
   "version": "0.0.1",
-  "main": "dist/element.js",
+  "main": "dist/index.js",
   "dependencies": {...},
-  ...
+  "files": ["docs", "dist", "controller.js"],
+  "_pie_controller": "dist/controller.js" // alternative - see notes below
 }
 ``` 
 
@@ -40,6 +58,18 @@ This file will be defined as a `.js` file and should be an ES6 module that is th
 Define dependencies that need to be include with your PIE when it is run in the browser. 
 
 
+### files
+
+Defines what files should be downloaded when the pacakge is installed.
+
+> `README.md`, and `package.json` and some [other files](https://docs.npmjs.com/files/package.json#files) will always be included by npm 
+
+### _pie_controller
+
+If defined, this property declares the path to the `controller.js` file for the PIE. 
+If it is not present, it is assumed that `controller.js` is at the root of the package directory.
+
+
 ## Demo and Docs
 
 The [serve-pie] utility helps load and preview PIEs, it enforces some conventions about how a PIE is structured so that it can be easily reviewed in a consistent way.
@@ -57,7 +87,7 @@ docs/
 
 #### README.md
 
-This markdown file should descrive and document how to use the PIE.
+This markdown file should describe and document how to use the PIE.
 
 #### schema.json
 
@@ -65,4 +95,4 @@ This file should be a json schema document, describing the model for the `config
 
 #### demo/
 
-This should contain a sample usage of the PIE using the [PIE format]().
+This should contain a sample usage of the PIE, see [Defining Questions](../using/defining-questions.md).
