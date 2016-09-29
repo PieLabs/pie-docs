@@ -47,7 +47,7 @@ A PIE can define the framework used for development and other preferences for mo
 
 Defines the framework used to build the PIE. Currently ReactJS and Vue.js are supported [contact us](evan@corespring.org) if you're interested in having support added for another framework. 
 
-If `react` is specified: `.jsx` and `.js` files will be processed with the jsx-loader
+If `react` is specified: `.jsx` files may be imported,  and `.js` files that contain JSX code will be handled correctly.
 
 ### Defaults
 
