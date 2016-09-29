@@ -1,3 +1,4 @@
+# publishes to github pages branch
 rm -rf _book
 gitbook build
 cd _book

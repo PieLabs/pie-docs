@@ -5,5 +5,8 @@
       "facebook": false,
       "twitter": false
     }
+  },
+  "structure": {
+    "readme": "INTRODUCTION.md"
   }
 }

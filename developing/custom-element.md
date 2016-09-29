@@ -4,6 +4,10 @@ The user interface for the PIE is provided in the browser by a [Custom Element](
 
 It should be defined in an ES6 module which is included as the main entry point the package (see [Packaging](packaging.md))
 
+> The most basic definition of a Element module is an ES6 module (CommonJS is also supported).
+> For information on developing and building your Custom Element module with framework support see [Building Modules](building-modules.md)
+
+
 ```javascript
 export default class MyPie extends HTMLElement {
 
@@ -14,6 +18,7 @@ export default class MyPie extends HTMLElement {
   }
 }
 ```
+
 
 The Element receives properties that are set by the PIE Player, and may emit events to communicate out the Player.
 
@@ -35,103 +40,7 @@ The PIE should emit an event if this state changes due to user interaction in th
 
 
 
-### React JS Example
 
-In this example React JS is used as the framework for developing the PIE.
-The main React Component is defined in `main.jsx`, in this example module below, that component is wrapped in a Custom Element which is the interface to communicate with the PIE Player. 
-
-```javascript
-
-import Main from './main.jsx';
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-export default class MyReactElement extends HTMLElement{
-
-  constructor(){
-    super();
-    this._model = null;
-    this._session = null;
-  }
-  
-  set model(s){
-    this._model = s;
-    this._rerender();
-  }
-  
-  set session(s){
-    this._session = s;
-    this._rerender();
-  }
-
-  _rerender() {
-    if (this._model && this._session) {
-      var element = React.createElement(Main, { model: this._model, session: this._session });
-      ReactDOM.render(element, this, function () {
-        console.log('rendered');
-      });
-    } else {
-      console.log('skip');
-    }
-  }
-
-  createdCallback() {
-    this._rerender();
-  }
-
-}
-
-```
-> This example assumes a builder & transpiler is used to handle ES6 and framework specific file types.  
-
-### Vue.js Example
-
-```javascript
-import Vue from 'vue'
-import Main from './main.vue'
-
-export default class CorespringMultipleChoiceVueElement extends HTMLElement{
-  constructor(){
-    super();
-    this._model = null;
-    this._session = null;
-  }
-
-  set model(s){
-    this._model = s;
-    this._rerender();
-  }
-
-  set session(s){
-    this._session = s;
-    this._rerender();
-  }
-
-  createdCallback() {
-    console.log('created');
-    this.innerHTML = "<root-component></root-component>";
-    this._rerender();
-  }
-
-  _rerender() {
-    console.log('_rerender...');
-    if (this._model && this._session) {
-      Vue.component('root-component', Main)
-      let vm = new Vue({
-        el: this
-      })
-     console.log("vue rendered");
-
-    } else {
-      console.log('skip');
-    }
-  }
-
-}
-```
-> This example assumes a builder & transpiler is used to handle ES6 and framework specific file types. 
-
-### ES6 CustomElement Example
 
 ### Brower Support
 

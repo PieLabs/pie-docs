@@ -8,7 +8,6 @@ To create a PIE a developer implements:
 2. A Controller that provides the model to the UI and processes user responses to generate results/outcomes and learning activity 
 3. An NPM package that allows users/systems to install and use your PIE
 
-See the developer [tools](tools.md) to help bootstrap PIE development.
 
 #### Example
 
