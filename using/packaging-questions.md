@@ -9,7 +9,7 @@ The PIE project provides a [PIE Packaging tool](TODO-LINK) that will package and
 
 >pie package [item directory]
 
-When an Assessment Item is packaged the packaging tool adds the following javascript files to the item definition: `pie.js` and `controllers.js`
+When an Assessment Item is packaged the packaging tool adds the following javascript files to the item definition: `pie.js` and `controller.js`
 
 
 
@@ -21,7 +21,7 @@ This contains the javascript for rendering the PIE Custom Elements defined in `c
 The script defines a `<pie-player>` Custom Element which will load the Assessment Item in HTML.
 
 
-#### `controllers.js`
+#### `controller.js`
 
 This script provides access to the Controllers for each PIE indexed with its defined name, and  other methods for working with 
 
