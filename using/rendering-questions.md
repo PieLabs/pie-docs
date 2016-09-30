@@ -7,7 +7,7 @@ A packaged item will have the following assets:
 ```
   config.json // the definition and configuration for the PIEs in the assessment item 
   index.html // placement of the PIE Custom Elements in html markup
-  pie-player.js // assembled Javascript for rendering the UI for the Assessment Item in <pie-player/>
+  pie.js // assembled Javascript for rendering the UI for the Assessment Item in <pie-player/>
   controllers.js // the packaged controller code for the PIEs and item.
 ```
 
@@ -19,7 +19,7 @@ Using these assets the Item can be rendered in the browser. The controller logic
 The PIE Player Javascript defines a Custom Element
 
 ```html
-<script src="pie-player.js"/>
+<script src="pie.js"/>
 <script src="controllers.js"/>
 
 <pie-player id="pie-player"></pie-player>
@@ -27,19 +27,27 @@ The PIE Player Javascript defines a Custom Element
 <script>
 
 var player = document.querySelector('pie-player');
-player.addEventListener('pie-player-ready', function(event){
 
-  // set the controllers
-  event.target.controllers = _pie_controllers;
-  // add handler methods
-  event.target.onSessionChanged = function(session) {}
-  // set the env (should also add logic to reset env on change)
-  event.target.env = env;
-  // set session if loading existing session
-  event.target.session = session;
-  
+// load json data model 
+var questionModel = ;//
+var _pie_controllers.setModel(questionModel);
+
+player.addEventListener('pie-player-ready', function(event){
+    let player = event.target;
+    player.env = env;
+    player.session = session;
+    player.controller = controller;
 });
 
+  // add event handlers
+  player.addEventListener('pie', function(event) {
+      if(e.detail.type === 'modelUpdated') {
+      //... 
+    } else if(e.detail.type === 'sessionChanged') {
+      //... 
+    }
+  });
+  
 </script>
 ```
 
