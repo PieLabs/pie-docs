@@ -1,6 +1,6 @@
 # Summary
 
-Each PIE is an indvidual question-type or interaction that is designed to be re-used.
+Each PIE is an indvidual question-type or interaction that is designed to be re-used. An example of a PIE might be a multi-choice question-type, or a question-type that allows a student to make a bar chart or plot points on a graph.
 
 To create a PIE a developer implements:
 
@@ -34,17 +34,19 @@ export default class MyPie extends HTMLElement {
 
 ```
 
+> As a best-practice the PIE Custom Element should be written in ES6 (although CommonJS modules are also supported) The PIE project provides development [tools](https://github.com/PieLabs/pie-cli) that handle transpilation and bundling. 
+
 **Controller**
 
-A Controller is implemented by the PIE, this provides a model for the PIE Element to use in the UI and provides logic for analyzin a response and providing an outcome.
+A Controller is implemented by the PIE, this provides a model for the PIE Element to use in the UI and provides logic for analyzing a response and providing an outcome.
 
 ```javascript
-export function model(question, session, env) {
-  ...
+export function model(config, session, env) {
+   // called when PIE is initialized and any time `env` (enviroment) properties change
 }
 
-export function outcome(question, session, env) {
-  ...
+export function outcome(config, session, env) {
+  // called to produce an outcome from the user interaction with the pie (score, etc)
 }
 ```
 

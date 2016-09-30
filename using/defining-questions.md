@@ -4,7 +4,7 @@ Each PIE is a re-usable question/interaction-type.
 
 An Assessment Item is one or more PIE interactions configured by a content author to present questions or interactions to a student.
 
-To define an Assesment Item using one or more PIEs a user or authoring system creates a JSON and HTML file: 
+To define an Assesment Item using one or more PIEs a user (or authoring system) creates a JSON and HTML file: 
 
 
 - **config.json** - Contains the definition and configuration for the PIEs used in the item.
@@ -36,21 +36,21 @@ The JSON definition contains the following properties:
 This defines the PIE Player npm package to use for rendering the item.
 If this property is not defined, the latest version of `pie-player` will be used by the packaging tool when assessment item.
 
-[Semver](http://semver.org) versioning is use. 
+[Semver](http://semver.org) versioning is used. 
 
 
-#### pies (required)
+#### `pies` (required)
 
 An array of Objects specifying and configuring each PIE in the Assessment Item.
 
 Each of these Objects contains the following required properties:
 
 
-##### id (required)
+##### `id` (required)
 
 Unique id (within the definition) for the defined PIE
 
-##### pie (required)
+##### `pie` (required)
 
 The pie Object contains the following properties:
 
@@ -83,7 +83,7 @@ The pie Object contains the following properties:
 
 
 
-#### weights (optional)
+#### `weights` (optional)
 
 This Object is optional, it defines the score weighting for each PIE included in the definition.
 A calculated score for the assessment item will take these weights into account.
@@ -97,7 +97,16 @@ A calculated score for the assessment item will take these weights into account.
     ]
 ```
 
-Example:
+#### `langs` (optional)
+
+Defines the translations that are available for the item. 
+The pie-player provides an api to look up which languages are supported, the langauge to use is set by using the `lang` property in the `env` object passed to the PIEs.
+
+```json
+  "langs": ["en_US", "es_ES", "zh_CN"]
+```
+
+#### Example:
 
 `config.json`
 ```json
@@ -127,7 +136,8 @@ Example:
     "weights": [
         {"id":"1", "weight": "2"},
         {"id":"2", "weight": "1"}
-    ]
+    ],
+    "langs": ["en_US", "es_ES", "zh_CN"]
 }
 ```
 

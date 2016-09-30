@@ -63,4 +63,7 @@ TODO - link to doc/section explaining how to do this.
 
 ## PIE Player API
 
-TODO
+### `langs()`
+
+TODO - return an array of languages available for the assessment item.
+Using this information developer loading the PIE can decide to switch the language to the user's locale or offer buttons to do this. 

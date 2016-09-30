@@ -38,10 +38,11 @@ The PIE should emit an event if this state changes due to user interaction in th
 
 ### Events
 
-
+A PIE should emit the following events in response to user interaction:
 
 
 
 ### Brower Support
 
 Custom Elements are natively supported in Chrome and are availble in other browsers via a polyfill. (Firefox and Webkit have Custom Elements markedd as in development - Sep 2016)
+

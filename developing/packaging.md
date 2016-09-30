@@ -29,7 +29,7 @@ Example Package.json:
 {
   "name": "my-pie",
   "version": "0.0.1",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "dependencies": {...},
   "files": ["docs", "dist", "controller.js"],
   "_pie_controller": "dist/controller.js" // alternative - see notes below
@@ -51,12 +51,13 @@ This is the entry point for defining the Custom Element for your PIE.
 
 This file will be defined as a `.js` file and should be an ES6 module that is the entry point module for your Custom Element. (See examples in [Custom Element](custom-element.md))
 
-> Important note: You should not bundle / pack your PIE's dependencies in this file, The PIE packaging tool [pie-p](todo) will do that on your behalf.
+> Important: You should not bundle / pack your PIE's dependencies in this file, The [PIE CLI packaging tool](https://github.com/PieLabs/pie-cli) will do that on your behalf.
 
 
 ### dependencies
-Define dependencies that need to be include with your PIE when it is run in the browser. 
 
+Define dependencies that need to be include with your PIE when it is run in the browser. 
+Care should be taken to only define dependencies that are used in the PIE, and to not add too much download size to the PIE when distributed.
 
 ### files
 
@@ -72,7 +73,7 @@ If it is not present, it is assumed that `controller.js` is at the root of the p
 
 ## Demo and Docs
 
-The [serve-pie] utility helps load and preview PIEs, it enforces some conventions about how a PIE is structured so that it can be easily reviewed in a consistent way.
+The [pie-cli] `serve` utility helps load and preview PIEs, it enforces some conventions about how a PIE is structured so that it can be easily reviewed in a consistent way.
 
 To support this, the following files should be present in a PIE package:
 

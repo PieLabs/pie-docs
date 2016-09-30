@@ -4,9 +4,9 @@ PIE Custom Elements are defined as javascript modules. In their most simple form
 
 In practice however, most web developers use frameworks such as React to build user interfaces, and often rely on external /shared libraries as dependencies.
 
-To support this kind of development the PIE Framework provides packaging and development tools through the `pie-cli` (built on top of the popular [webpack](https://webpack.github.io/) and [babel](https://babeljs.io) tools)
+To support this kind of development the PIE Framework provides packaging and development tools through the [PIE CLI](https://github.com/PieLabs/pie-cli) (which is built on top of the popular [webpack](https://webpack.github.io/) and [babel](https://babeljs.io) tools)
 
-These tools:
+These PIE CLI tools:
 
  - Support the use of ES6 modules in PIEs (ES6 is recommended, commonJS is supported)
  - Will bundle external dependencies defined in the PIE's `package.json`

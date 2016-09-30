@@ -22,19 +22,18 @@ This function is used to set the `model` property on the PIE Element.
 
 It receives three objects as its arguments: **config**, **session**, and **env**
 
-#### config
+#### Object: config
 
 This is the definition of the question/configuration for the question as provided by the author using the PIE to create an interaction or question.
 
-It is up to the PIE developer to determine what the model of this object should be, depeding on the needs of the particular interaction type.
+It is up to the PIE developer to define what the structure of this object should be based on the needs of the interaction type.
 
-For examples, see Example PIEs in the [Tools](tools.md) section.
 
-#### session
 
-This is the state of a users' response/interaction with the PIE. It 
+#### Object: session
 
-TODO: discuss fixed props for  `lang`
+This is the state of a users' response/interaction with the PIE. The PIE developer defines the structure of this object and uses it to store user responses or other data about the uers's interaction.
+
 
 
 
