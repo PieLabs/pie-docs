@@ -7,6 +7,7 @@
  - [Packaging](developing/packaging.md)
  - [Environment](developing/environment.md)
  - [Building Modules](developing/building-modules.md)
+ - [Yeoman Generators](developing/yeoman-generators.md)
 - Using PIE Content
  - [Defining Questions](using/defining-questions.md)
  - [Packaging Questions](using/packaging-questions.md)
