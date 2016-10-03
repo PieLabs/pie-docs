@@ -5,21 +5,28 @@ PIEs are defined as NPM packages, and as a best practice follow a structure for 
 ## NPM Package
 
 
-The following directory structure and files should be present in the package (and included when it is installed):
+The following directory structure and files should be present in the package (and included when it is installed with npm):
 
 
-```
-README.md
-package.json
-controller.js
-docs/
-  shema.json
-  demo/
-    index.html
-    config.json
-```
+| File | Description | Required? |
+|----------------------------|----------------------------------------------------------------------------------------------------------------------|-------------|
+| `README.md` | Documentation to describe the PIE to users  | yes |
+| `package.json` | Definition for the PIE as an NPM package. Including dependencies needed for rendering | yes |
+| `controller/controller.js` | CommonJS or ES6 module for the PIE controller logic | yes |
+| `controller/package.json` | Used to define dependencies needed by the controller. Dependencies should be kept to a minimum and should not use IO | no |
+| `docs/schema.json` | JSON schema document that defines the configuration model for the PIE | recommended |
+| `docs/demo` | Directory that defined a demonstration assessment item using this PIE | recommended |
+| `docs/demo/index.html` | The HTML markup for the demo assessment item | recommended |
+| `docs/demo/config.json` | The JSON config for the demo assessment item | recommended |
+| `src/` | Directory for the PIE Element source code*  | recommended |
+| `test/` | Directory for the test code  | recommended |
 
-> Additional directories and files may be added at the discretion of the developer, but care should be taken so that only necesssry files are indluded with the package using the `files` property in package.json and `.npmignore` file as necessary.
+> \* The PIE element source code can be placed in any directory as long as the `main` property in `package.json` points to the main module for this code. 
+
+
+> Additional directories and files may be added at the discretion of the developer, but care should be taken so that only necesssry files are indluded with the package using the `files` property in package.json and `.npmignore` file as necessary. 
+
+
 
 The package definition is contained in `package.json` see [npm documentation](https://docs.npmjs.com/files/package.json) for full documentation on npm packages.
 
@@ -67,15 +74,15 @@ Defines what files should be downloaded when the pacakge is installed.
 
 ### _pie_controller
 
-If defined, this property declares the path to the `controller.js` file for the PIE. 
-If it is not present, it is assumed that `controller.js` is at the root of the package directory.
+If defined, this property declares the path to the `controller` directory for the PIE. 
+If it is not present, it is assumed that `controller` is at the root of the package directory.
 
 
 ## Demo and Docs
 
 The [pie-cli] `serve` utility helps load and preview PIEs, it enforces some conventions about how a PIE is structured so that it can be easily reviewed in a consistent way.
 
-To support this, the following files should be present in a PIE package:
+To support this, as described above, the following files should be present in a PIE package:
 
 ```
 README.md
