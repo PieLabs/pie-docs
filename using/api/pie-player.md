@@ -42,8 +42,8 @@ In es5 the controller.js creates a var _pie_controller, that can be used to acce
  
 #### completeResponse() 
 Mark a session as complete.   
-**Verification needed:** Does it dispatch a response-change event?
-**Verification needed:** Can a session be complete, if it doesn't have all the answers?
+**Verification needed:** Does it dispatch a response-change event?   
+**Verification needed:** Can a session be complete, if it doesn't have all the answers?   
 
  ```
    player.completeResponse();
@@ -61,8 +61,8 @@ Returns the following information about the responses:
 2. interactionCount: Number
 3. interactionsWithResponseCount: Number
 
-**Verification needed:** Should it contain the session too? 
-**Verification needed:** Should it contain the value of isComplete? 
+**Verification needed:** Should it contain the session too?    
+**Verification needed:** Should it contain the value of isComplete?    
  
  ```
     player.getSessionStatus();
@@ -79,7 +79,7 @@ Returns the following information about the responses:
   ```
 
 #### isComplete() 
-**Verification needed:** Can a session be completed by answering all questions? Or is this reporting truem only when completeResponse has been called?
+**Verification needed:** Can a session be completed by answering all questions? Or is this reporting truem only when completeResponse has been called?   
 
   ```
     var isComplete = player.isComplete()

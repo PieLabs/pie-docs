@@ -41,7 +41,7 @@ Set the configuration object for the pies
 
 #### getOutcome() 
 Calculate the outcome for the current session.  
-**Verification needed**: What should happen, when the session does not have all the answers?
+**Verification needed**: What should happen, when the session does not have all the answers?   
 
  ```
  var outcome = _pie_controller.getOutcome();
