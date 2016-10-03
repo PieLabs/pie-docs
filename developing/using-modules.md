@@ -1,4 +1,4 @@
-# Building Modules
+# Using Modules
 
 PIE Custom Elements are defined as javascript modules. In their most simple form they can be provided as self-contained ES5 or ES6 module that exports an HTMLElement and has no external dependencies.
 
