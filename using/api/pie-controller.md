@@ -22,15 +22,14 @@ If you want to implement a server based controller, it has to implement these me
 ### Methods
 
 #### outcome
-The outcome method delegates to the pie controller outcome method.
-
  ```
  /**
   * Delegates to the pie controller outcome method and returns the collected results
   * @param ids The pie controllers, which should be delegated to, are identified by the ids.
   * @param session The session contains one session element for every pie.
-  * @param env The env object is used to pass the player mode and other player settings like language and accessibility options
-  * @return The method returns a promise with an array of the outcomes
+  * @param env The env object is used to pass the player mode and other player 
+  *     settings like language and accessibility options
+  * @returns The method returns a promise with an array of the outcomes
   */
   function outcome(ids, session, env) 
  ```
@@ -50,15 +49,14 @@ The outcome method delegates to the pie controller outcome method.
  ```
 
 #### model(ids, session, env)
-The model method delegates to the pie controller model method.
-
  ```
  /**
   * Delegates to the pie controller model method and returns the collected results
   * @param ids The pie controllers, which should be delegated to, are identified by the ids.
   * @param session The session contains one session element for every pie.
-  * @param env The env object is used to pass the player mode and other player settings like language and accessibility options
-  * @return The method returns a promise with an array of the models
+  * @param env The env object is used to pass the player mode and other player 
+  *    settings like language and accessibility options
+  * @returns The method returns a promise with an array of the models
   */
   function model(ids, session, env) 
  ```

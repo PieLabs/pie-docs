@@ -43,10 +43,19 @@ The controller is used by the player to calculate model changes and outcomes.
  ```
  
 #### completeResponse() 
-Mark a session as complete.   
 **Verification needed:** Does it dispatch a response-change event?   
 **Verification needed:** Can a session be complete, if it doesn't have all the answers?   
 
+ ```
+ /**
+  * Mark the current session as complete.
+  * @returns The method returns a Promise 
+  */
+  function completeResponse() 
+  
+ ```
+
+##### Example
  ```
    player.completeResponse().then(function(){
       var isComplete = player.isComplete();
@@ -58,34 +67,51 @@ Mark a session as complete.
  ```
  
 #### getOutcome() 
-Calculate the outcome for the current session.  
 **Verification needed**: What should happen, when the session does not have all the answers?   
 
  ```
+  /**
+   * Calculate the outcome for the current session.  
+   * @returns The method returns a Promise with the outcome 
+   */
+   function getOutcome() 
+   
+  ```
+
+##### Example 
+
+  ```
  player.getOutcome().then(function(outcome){
     console.log(outcome);
  });
   
  //output
  {
-  summary: { maxPoints: 7, points: 7, percentage: 100 },
-  components: [
-     {id: "01", score: {scaled: 1, min: 0, max:7, raw: 7}}
-  ] 
+    summary: { maxPoints: 7, points: 7, percentage: 100 },
+    components: [
+       {id: "01", score: {scaled: 1, min: 0, max:7, raw: 7}}
+    ] 
  }
  ``` 
  
 
 #### getSessionStatus()
-Returns the following information about the responses: 
-  
-1. allInteractionsHaveResponse: Boolean 
-2. interactionCount: Number
-3. interactionsWithResponseCount: Number
-
 **Verification needed:** Should it contain the session too?    
 **Verification needed:** Should it contain the value of isComplete?    
- 
+
+```
+  /**
+   * Get the status of the session
+   * 1. allInteractionsHaveResponse: Boolean 
+   * 2. interactionCount: Number
+   * 3. interactionsWithResponseCount: Number
+   * @returns The method returns a Promise with the session status 
+   */
+   function getSessionStatus() 
+   
+  ```
+
+##### Example 
  ```
     player.getSessionStatus().then(function(sessionStatus){
       console.log(sessionStatus);
@@ -93,16 +119,26 @@ Returns the following information about the responses:
      
     //output
     {
-     allInteractionsHaveResponse: true,
-     interactionCount: 7,
-     interactionsWithResponseCount: 7
+      allInteractionsHaveResponse: true,
+      interactionCount: 7,
+      interactionsWithResponseCount: 7
     }
       
   ```
 
 #### isComplete() 
-**Verification needed:** Can a session be completed by answering all questions? Or is this reporting truem only when completeResponse has been called?   
+**Verification needed:** Is this reporting whether completeSession has been called or can a session be completed by answering all questions?    
 
+  ```
+  /**
+   * Is the session complete
+   * @returns The method returns a Promise with the value of isComplete 
+   */
+   function isComplete() 
+   
+  ```
+
+##### Example 
   ```
     player.isComplete().then(function(isComplete){
       console.log(isComplete);
@@ -113,20 +149,40 @@ Returns the following information about the responses:
   ```
 
 #### reset() 
-Reset the session, as if it is loaded for the first time.    
-This includes everything stored in the session, also stashed orders.    
+  ```
+  /**
+   * Reset the session, as if it is loaded for the first time.    
+   * This includes everything stored in the session, also stashed orders.
+   * @returns The method returns a Promise
+   */
+   function reset() 
+  ```
+
+##### Example 
 
   ```
-    player.reset()
+    player.reset().then(function(){
+       console.log("session has been reset");
+    });
   ```
 
         
 #### resetResponse()  
-Reset all the changes a user has done to the interactions.   
-This is different from player.reset() in that it doesn't reset other things, that have been stored in the session, eg. a random order of multiple choice options    
-        
   ```
-    player.resetResponse()
+  /**
+   * Reset all the changes a user has done to the interactions.   
+   * This is different from player.reset() in that it doesn't reset other things, 
+   * that have been stored in the session, eg. a random order of multiple choice options    
+   * @returns The method returns a Promise
+   */
+   function resetResponse() 
+  ```
+##### Example 
+  
+  ```
+    player.resetResponse().then(function(){
+       console.log("responses have been reset");
+    });
   ```
  
 ### Events 
