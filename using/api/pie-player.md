@@ -4,7 +4,11 @@
 ## Html
 ### Custom Element <pie-player>  
 This element renders the pies.      
-It serves as the main access object for the api described below. 
+It serves as the main access object for the api described below.
+ 
+ ```
+  <pie-player id="my-player"></pie-player>
+ ```
     
 ## Javascript Api
  
@@ -31,13 +35,11 @@ The pies can use the session to store session related data like the order of opt
 
 #### Setter controller
 The controller is used by the player to calculate model changes and outcomes.
-The controller itself has an api to set the config.json.  
-In es5 the controller.js creates a var _pie_controller, that can be used to access the controller.  
  
  ```
-  let config = ... //load json 
-  _pie_controller.setConfig(config);  
-  player.controller = _pie_controller
+  var config = ... //load json
+  var controller = new pie.Controller(config); 
+  player.controller = controller;
  ```
  
 #### completeResponse() 
@@ -46,13 +48,33 @@ Mark a session as complete.
 **Verification needed:** Can a session be complete, if it doesn't have all the answers?   
 
  ```
-   player.completeResponse();
-   var isComplete = player.isComplete();
-   console.log(isComplete)
+   player.completeResponse().then(function(){
+      var isComplete = player.isComplete();
+      console.log(isComplete) 
+   });
     
    //output 
    true
  ```
+ 
+#### getOutcome() 
+Calculate the outcome for the current session.  
+**Verification needed**: What should happen, when the session does not have all the answers?   
+
+ ```
+ player.getOutcome().then(function(outcome){
+    console.log(outcome);
+ });
+  
+ //output
+ {
+  summary: { maxPoints: 7, points: 7, percentage: 100 },
+  components: [
+     {id: "01", score: {scaled: 1, min: 0, max:7, raw: 7}}
+  ] 
+ }
+ ``` 
+ 
 
 #### getSessionStatus()
 Returns the following information about the responses: 
@@ -65,9 +87,9 @@ Returns the following information about the responses:
 **Verification needed:** Should it contain the value of isComplete?    
  
  ```
-    player.getSessionStatus();
-    var sessionStatus = player.getSessionStatus(); 
-    console.log(sessionStatus);
+    player.getSessionStatus().then(function(sessionStatus){
+      console.log(sessionStatus);
+    });
      
     //output
     {
@@ -82,8 +104,9 @@ Returns the following information about the responses:
 **Verification needed:** Can a session be completed by answering all questions? Or is this reporting truem only when completeResponse has been called?   
 
   ```
-    var isComplete = player.isComplete()
-    console.log(isComplete);
+    player.isComplete().then(function(icComplete){
+      console.log(isComplete);
+    })
     
     //output
     false 
@@ -122,13 +145,12 @@ This event is dispatched, when the api of a pie-player is ready to be used.
  ```
 
 #### response-change (bubbles=true)
-The event is dispatched, whenever the status of the current response has changed, eg. when a question is loaded, when the user interacts with a question, when a session is reset.   
+The event is dispatched, whenever the status of the current response has changed, eg. when a question is loaded, when the user interacts with a question, when a session is reset.
+The event.detail contains a sessionStatus object    
 
  ```
   player.addEventListener('response-change', function(evt){
-     var player = event.target;
-     var sessionStatus = player.getSessionStatus(); 
-     console.log(sessionStatus); 
+     console.log(evt.detail.sessionStatus); 
      
      //output
      {
