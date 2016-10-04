@@ -1,64 +1,80 @@
 # Rendering Questions
 
-As discussed in the previous section [packaging questions](packaging-questions.md) the basic definition of an Assessment Item is created using a `config.json` and `index.html` file. The PIE Packaging Tool assembles and packages a javascript runtime for the Assessment Item.
+The basic definition of an Assessment Item is created using a `config.json` and `index.html` file (see the previous section [packaging questions](packaging-questions.md)).
 
-A packaged item will have the following assets:
+
+The PIE Packaging Tool assembles and packages a javascript runtime for the Assessment Item.
+
+In addition to the base definition files (`config.json` and `index.html`) a packaged item will have the following files:
 
 ```
-  config.json // the definition and configuration for the PIEs in the assessment item 
-  index.html // placement of the PIE Custom Elements in html markup
   pie.js // assembled Javascript for rendering the UI for the Assessment Item in <pie-player/>
-  controllers.js // the packaged controller code for the PIEs and item.
+  pie-controllers.js // the packaged controller code and config for the PIEs and Assessment Item.
 ```
 
-Using these assets the Item can be rendered in the browser. The controller logic can be run entirely on the client, or on the server if that is desired.
+Using these assets the Item can be rendered in the browser. The controller logic can be run entirely on the client, or on a server if that is desired.
 
 
 ## Loading PIE Player
 
-The PIE Player Javascript defines a Custom Element
+The PIE Player Javascript defines a Custom Element `pie-player` this can be added to an HTML page to render the assessment item.
+
+To configure the player the `config` json and `env` properties are set. If loading an existing user session, the `session` property could be loaded and set.
+
+The following example shows how to load the player using client-side controller.  
+
 
 ```html
-<script src="pie.js"/>
-<script src="controllers.js"/>
 
 <pie-player id="pie-player"></pie-player>
 
-<script>
-
-var player = document.querySelector('pie-player');
-
-// load json data model 
-var questionModel = ;//
-var _pie_controllers.setModel(questionModel);
-
-player.addEventListener('pie-player-ready', function(event){
-    let player = event.target;
-    player.env = env;
-    player.session = session;
-    player.controller = controller;
+<!-- all the code and html for rendering the assessment item is bundled in pie.js -->
+<script src="pie.js" type="text/javascript"></script>
+<!-- pie-controller.js includes the configuration and controller methods -->
+<script src="pie-controller.js" type="text/javascript"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function(){
+  // see documentation on Environment for configuring this
+  environment = {view: 'gather'};
+  var player = document.querySelector('pie-player');
+  player.addEventListener('pie-player-ready', function(event){
+    player.controller = new pie.Controller();
+    player.env = environment;
+  });
+  player.addEventListener('response-change', function(evt){
+    // triggered when a user modifies their response
+  });
 });
 
-  // add event handlers
-  player.addEventListener('pie', function(event) {
-      if(e.detail.type === 'modelUpdated') {
-      //... 
-    } else if(e.detail.type === 'sessionChanged') {
-      //... 
-    }
-  });
-  
 </script>
+
 ```
 
 
 ## Server-side execution of Controller Functions
 
-For implementation of more secure environments, where the full question configuration model is not downloaded to the client (potentially including correct answers) the PIE controller code may be hosted on a server instead of the client.
+Short example of using controllers hosted on a server. See [documentation](server-side-controller.md) for complete explanation.
 
-To support this workflow, an alternate `controllers.js` may be used, that maps the requests to a server endpoint.
 
-TODO - link to doc/section explaining how to do this.
+```
+<pie-player id="pie-player"></pie-player>
+<!-- all the code and html for rendering the assessment item is bundled in pie.js -->
+<script src="pie.js" type="text/javascript"></script>
+<!-- using utility library to map controller calls to a server - see full documentation on server-side controllers -->
+<script src="/node_modules/pie-remote-controller/pie-remote-controller.js" type="text/javascript"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function(){
+  env = {view: 'gather'};
+  session = [];  
+  var player = document.querySelector('pie-player');
+  player.addEventListener('pie-player-ready', function(event){
+    var route = "/my/server/items/:itemId/";
+    player.controller = new pie.RemoteController(route);
+    player.env = env;
+    player.session = session;
+  });
+});	
+```
 
 
 ## PIE Player API

@@ -217,3 +217,7 @@ The event.detail contains a sessionStatus object
   ```
    
 
+### `langs()`
+
+TODO - return an array of languages available for the assessment item.
+Using this information developer loading the PIE can decide to switch the language to the user's locale or offer buttons to do this. 
