@@ -104,7 +104,7 @@ Returns the following information about the responses:
 **Verification needed:** Can a session be completed by answering all questions? Or is this reporting truem only when completeResponse has been called?   
 
   ```
-    player.isComplete().then(function(icComplete){
+    player.isComplete().then(function(isComplete){
       console.log(isComplete);
     })
     
