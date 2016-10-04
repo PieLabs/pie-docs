@@ -17,7 +17,24 @@ When you load the controller.js in a script tag, a global var pie is created, wh
    
 ## Javascript Api
 Typically the client for this api is the pie-player. The methods should not be called by you directly.  
-If you want to implement a server based controller, it has to implement these methods.      
+If you want to implement a server based controller, it has to implement these methods.
+      
+### Constructor 
+ ```
+ /**
+  * Create a controller
+  * @param pies An array of pie configurations
+  * @param controllerMap A map from pie names to pie controllers.   
+  */
+  function PieController(pies, controllerMap) 
+ ```
+
+##### Example
+
+ ```
+  var pies = [{id:"1", pie:{name:"my-pie"}, model: {...}}];
+  player.controller = new pie.Controller(pies, pie.controllerMap)
+ ```
  
 ### Methods
 

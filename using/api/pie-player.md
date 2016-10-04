@@ -38,8 +38,7 @@ The controller is used by the player to calculate model changes and outcomes.
  
  ```
   var config = ... //load json
-  var controller = new pie.Controller(config); 
-  player.controller = controller;
+  player.controller = new pie.Controller(config.pies, pie.controllerMap); 
  ```
  
 #### completeResponse() 
