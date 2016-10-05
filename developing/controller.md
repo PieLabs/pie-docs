@@ -1,6 +1,6 @@
 # Controller
 
-The PIE Controller is the logic provided by your PIE to set the model for the PIE Element for the user interface, and to process a user's session to provide an outcome. 
+The PIE Controller is the logic provided by your PIE to set the model for the PIE Element for the user interface and to process a user's session to provide an outcome. 
 
 This module should export two functions, `model` and `outcome`
 
@@ -32,14 +32,14 @@ It is up to the PIE developer to define what the structure of this object should
 
 #### Object: session
 
-This is the state of a users' response/interaction with the PIE. The PIE developer defines the structure of this object and uses it to store user responses or other data about the uers's interaction.
+This is the state of a users' response/interaction with the PIE. The PIE developer defines the structure of this object and uses it to store user responses or other data about the user's interaction.
 
 
 
 
 ### Function: outcome(config, session, env)
 
-The outcome function provides a result of the users interaction with the PIE
+The outcome function provides a result of the user's interaction with the PIE
 
 The model for the `outcome` should be:
 
