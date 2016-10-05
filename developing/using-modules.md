@@ -1,8 +1,8 @@
 # Using Modules
 
-PIE Custom Elements are defined as javascript modules. In their most simple form they can be provided as self-contained ES5 or ES6 module that exports an HTMLElement and has no external dependencies.
+PIE Custom Elements are defined as javascript modules. In their most simple form, they can be provided as self-contained ES5 or ES6 module that exports an HTMLElement and has no external dependencies.
 
-In practice however, most web developers use frameworks such as React to build user interfaces, and often rely on external /shared libraries as dependencies.
+In practice, however, most web developers use frameworks such as React to build user interfaces and often rely on external /shared libraries as dependencies.
 
 To support this kind of development the PIE Framework provides packaging and development tools through the [PIE CLI](https://github.com/PieLabs/pie-cli) (which is built on top of the popular [webpack](https://webpack.github.io/) and [babel](https://babeljs.io) tools)
 
@@ -17,7 +17,7 @@ These PIE CLI tools:
 
 ## ES6 Imports
 
-As best practice PIEs should be written using ES6 and using ES6 imports. 
+As a best practice PIEs should be written using ES6 and using ES6 imports. 
 
 ```javascript
 
@@ -45,7 +45,7 @@ A PIE can define the framework used for development and other preferences for mo
 
 #### `"framework": ['react', 'vue'] `
 
-Defines the framework used to build the PIE. Currently ReactJS and Vue.js are supported [contact us](evan@corespring.org) if you're interested in having support added for another framework. 
+Defines the framework used to build the PIE. Currently, ReactJS and Vue.js are supported [contact us](evan@corespring.org) if you're interested in having support added for another framework. 
 
 If `react` is specified: `.jsx` files may be imported,  and `.js` files that contain JSX code will be handled correctly.
 
@@ -65,7 +65,7 @@ TODO
 
 ### React JS Example
 
-In this example React JS is used as the framework for developing the PIE.
+In this example, React JS is used as the framework for developing the PIE.
 The main React Component is defined in `main.jsx`, in this example module below, that component is wrapped in a Custom Element which is the interface to communicate with the PIE Player. 
 
 ```javascript

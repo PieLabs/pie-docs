@@ -24,7 +24,7 @@ The following directory structure and files should be present in the package (an
 > \* The PIE element source code can be placed in any directory as long as the `main` property in `package.json` points to the main module for this code. 
 
 
-> Additional directories and files may be added at the discretion of the developer, but care should be taken so that only necesssry files are indluded with the package using the `files` property in package.json and `.npmignore` file as necessary. 
+> Additional directories and files may be added at the discretion of the developer, but care should be taken so that only necessary files are included with the package using the `files` property in package.json and `.npmignore` file as necessary. 
 
 
 
@@ -46,7 +46,7 @@ Example Package.json:
 
 #### name (required)
 
-The package `name` property will be used as the Custom Element name. Elements should be named according to W3C [rules](https://www.w3.org/TR/custom-elements/#concepts) for Custom Elements (all-lowercase, must contain a hyphen). The name of the PIE should be unique, as such we recommend using your organization name as the first part of the name, e.g. `organization-pie-name`
+The package `name` property will be used as the Custom Element name. Elements should be named according to W3C [rules](https://www.w3.org/TR/custom-elements/#concepts) for Custom Elements (all-lowercase, must contain a hyphen). The name of the PIE should be unique, as such, we recommend using your organization name as the first part of the name, e.g. `organization-pie-name`
 
 ### version (required)
 
@@ -63,12 +63,12 @@ This file will be defined as a `.js` file and should be an ES6 module that is th
 
 ### dependencies
 
-Define dependencies that need to be include with your PIE when it is run in the browser. 
-Care should be taken to only define dependencies that are used in the PIE, and to not add too much download size to the PIE when distributed.
+Define dependencies that need to be included with your PIE when it is run in the browser. 
+Care should be taken to only define dependencies that are used in the PIE and to not add too much download size to the PIE when distributed.
 
 ### files
 
-Defines what files should be downloaded when the pacakge is installed.
+Defines what files should be downloaded when the package is installed.
 
 > `README.md`, and `package.json` and some [other files](https://docs.npmjs.com/files/package.json#files) will always be included by npm 
 
@@ -99,7 +99,7 @@ This markdown file should describe and document how to use the PIE.
 
 #### schema.json
 
-This file should be a json schema document, describing the model for the `config` object that needs to provided by a content author to use an instance of the PIE.
+This file should be a json schema document, describing the model for the `config` object that needs to be provided by a content author to use an instance of the PIE.
 
 #### demo/
 
