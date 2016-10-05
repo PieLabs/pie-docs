@@ -16,7 +16,7 @@ When an Assessment Item is packaged the packaging tool adds the following javasc
 
 #### `pie.js`
 
-This contains the javascript for rendering the PIE Custom Elements defined in `config.json` and `index.html`, along with bundled and optimized dependencies. 
+This file contains the javascript for rendering the PIE Custom Elements defined in `config.json` and `index.html`, along with bundled and optimized dependencies. 
 
 The script defines a `<pie-player>` Custom Element which will load the Assessment Item in HTML.
 
@@ -24,13 +24,13 @@ The script defines a `<pie-player>` Custom Element which will load the Assessmen
 #### `pie-controller.js`
 
 This script provides access to the configuration and controllers for the PIE Assessment Item. 
-It can be loaded directly in the browser or alternatively it can be hosted in a server environment*
+It can be loaded directly in the browser, or hosted in a server environment*
 
 
 
 ### Distributing Questions
 
-When sharing PIE Assessment Items between systems it is recommended that they be shared in their packaged form (including the basic definition and assets along with the assembled javascript code). The system receiving the items may choose to re-package if neccesary using the basic item definition.
+When sharing PIE Assessment Items between systems, the best practice is to share them in their packaged form (including the basic definition and assets along with the assembled javascript code). The system receiving the items may choose to re-package if necessary using the basic item definition.
 
 
 Example:
