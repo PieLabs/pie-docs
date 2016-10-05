@@ -4,7 +4,7 @@ The user interface for the PIE is provided in the browser by a [Custom Element](
 
 It should be defined in an ES6 module which is included as the main entry point the package (see [Packaging](packaging.md))
 
-> The most basic definition of a Element module is an ES6 module (CommonJS is also supported).
+> The most basic definition of an Element module is an ES6 module (CommonJS is also supported).
 > For information on developing and building your Custom Element module with framework support see [Building Modules](building-modules.md)
 
 
@@ -20,7 +20,7 @@ export default class MyPie extends HTMLElement {
 ```
 
 
-The Element receives properties that are set by the PIE Player, and may emit events to communicate out the Player.
+The Element receives properties that are set by the PIE Player and may emit events to communicate out the Player.
 
 
 
@@ -44,5 +44,4 @@ A PIE should emit the following events in response to user interaction:
 
 ### Brower Support
 
-Custom Elements are natively supported in Chrome and are availble in other browsers via a polyfill. (Firefox and Webkit have Custom Elements markedd as in development - Sep 2016)
-
+Custom Elements are natively supported in Chrome and are available in other browsers via a polyfill. (Firefox and Webkit have Custom Elements marked as in development - Sep 2016)
