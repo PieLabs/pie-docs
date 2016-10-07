@@ -95,7 +95,7 @@ The controller is used by the player to calculate model changes and outcomes.
  
 
 #### getSessionStatus()
-**Verification needed:** Should it contain the session too?    
+**Verification needed:** Should it contain the session itself too?    
 **Verification needed:** Should it contain the value of isComplete?    
 
 ```

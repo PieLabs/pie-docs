@@ -1,4 +1,5 @@
 # PieController 
+
 A PieController is responsible for delegating calls to the pie controllers.  
 The default controller is purely client side. It directly delegates to the pie controller methods.   
 In a server based scenario the controller would delegate the calls to the backend.                   
@@ -17,23 +18,23 @@ When you load the controller.js in a script tag, a global var pie is created, wh
    
 ## Javascript Api
 Typically the client for this api is the pie-player. The methods should not be called by you directly.  
-If you want to implement a server based controller, it has to implement these methods.
+If you want to implement a server based controller, it has to implement the same methods.
       
 ### Constructor 
  ```
  /**
   * Create a controller
-  * @param pies An array of pie configurations
+  * @param model A configuration object for the pies, eg. {pies:[ ... ]}.  
   * @param controllerMap A map from pie names to pie controllers.   
   */
-  function PieController(pies, controllerMap) 
+  function PieController(model, controllerMap) 
  ```
 
 ##### Example
 
  ```
-  var pies = [{id:"1", pie:{name:"my-pie"}, model: {...}}];
-  player.controller = new pie.Controller(pies, pie.controllerMap)
+  var config = {pies:[{id:"1", pie:{name:"my-pie"}, model: {...}}]};
+  player.controller = new pie.Controller(config, pie.controllerMap);
  ```
  
 ### Methods
@@ -42,22 +43,20 @@ If you want to implement a server based controller, it has to implement these me
  ```
  /**
   * Delegates to the pie controller outcome method and returns the collected results
-  * @param ids The pie controllers, which should be delegated to, are identified by the ids.
   * @param session The session contains one session element for every pie.
   * @param env The env object is used to pass the player mode and other player 
   *     settings like language and accessibility options
   * @returns The method returns a promise with an array of the outcomes
   */
-  function outcome(ids, session, env) 
+  function outcome(session, env) 
  ```
 
 ##### Example
 
  ```
-  var ids = ["1", "2"];
   var session = [{id:"1", value:[]}, {id:"2", value:[]}];
   var env = {mode:"evaluate"};
-  controller.outcome(ids, session, env).then(function(outcome){
+  controller.outcome(session, env).then(function(outcome){
     console.log(outcome);
     
     //output 
@@ -65,27 +64,25 @@ If you want to implement a server based controller, it has to implement these me
   })
  ```
 
-#### model(ids, session, env)
+#### model(session, env)
  ```
  /**
   * Delegates to the pie controller model method and returns the collected results
-  * @param ids The pie controllers, which should be delegated to, are identified by the ids.
   * @param session The session contains one session element for every pie.
   * @param env The env object is used to pass the player mode and other player 
   *    settings like language and accessibility options
   * @returns The method returns a promise with an array of the models
   */
-  function model(ids, session, env) 
+  function model(session, env) 
  ```
 
 ##### Example 
 
  ```
-  var ids = ["1", "2"];
   var session = [{id:"1", value:[]}, {id:"2", value:[]}];
-  var env = {mode:"evaluate"};
-  controller.outcome(ids, session, env).then(function(outcome){
-    console.log(outcome);
+  var env = {mode:"gather"};
+  controller.model(session, env).then(function(model){
+    console.log(model);
     
     //output 
     [{id:"1", model:{...}, {id:"2", model: {...}]
