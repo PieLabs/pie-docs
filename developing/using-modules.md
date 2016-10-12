@@ -103,7 +103,7 @@ export default class MyReactElement extends HTMLElement{
     }
   }
 
-  createdCallback() {
+  connectedCallback() {
     this._rerender();
   }
 
@@ -134,7 +134,7 @@ export default class CorespringMultipleChoiceVueElement extends HTMLElement{
     this._rerender();
   }
 
-  createdCallback() {
+  connectedCallback() {
     console.log('created');
     this.innerHTML = "<root-component></root-component>";
     this._rerender();

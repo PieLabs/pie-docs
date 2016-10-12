@@ -26,7 +26,7 @@ export default class MyPie extends HTMLElement {
     this._session = null;
   }
 
-  createdCallback() {
+  connectedCallback() {
     this._rerender();
   }
 
