@@ -16,12 +16,19 @@ export default class MyPie extends HTMLElement {
     this._model = null;
     this._session = null;
   }
+
+  connectedCallback() {
+    this.dispatchEvent(new Event('pie.register'));
+  }
 }
 ```
 
 
 The Element receives properties that are set by the PIE Player and may emit events to communicate out the Player.
 
+### `pie.register` Event
+
+A PIE should emit this event when the Custom Element is connected in the DOM. This event is handled by the PIE Player which will call the `model` and `session` properties on the element.
 
 
 ### Properties

@@ -42,3 +42,42 @@ The values will be [BCP 47](https://www.w3.org/International/articles/language-t
 TODO - we have not filled out this property list yet
 
 
+
+AmericanSignLanguage: Boolean
+BrailleType: String
+TDS_BT_EXN1 EBAE – Uncontracted – Nemeth Math
+TDS_BT_ECN EBAE – Contracted – Nemeth Math
+TDS_BT_EXT EBAE – Uncontracted – UEB Math
+TDS_BT_ECT EBAE – Contracted – UEB Math
+TDS_BT_UXN UEB – Uncontracted – Nemeth Math
+TDS_BT_UCN UEB – Contracted – Nemeth Math
+TDS_BT_UXT UEB – Uncontracted – UEB Math
+TDS_BT_UCT UEB – Contracted – UEB Math
+TDS_BT_G1 (legacy2) Uncontracted braille
+TDS_BT_G2 (legacy) Contracted braille
+
+
+ClosedCaptioning: Boolean
+
+ColorContrast
+Black on White (default)
+ Reverse Contrast
+ BlackOnRose
+ Medium Gray on Light Gray
+ Yellow on Blue
+
+Highlight (permit / don't permit)
+
+Mark for Review: Boolean (allowo mark for review?)
+
+Masking: Boolean
+
+NotePad Available: Boolean
+
+PermissiveMode 
+(Allows assistive technology software such as
+screen readers, magnifiers, etc. to be run
+on the computer. When disabled, only the
+secure web browser is allowed to run. )
+
+
