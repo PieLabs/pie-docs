@@ -1,0 +1,12 @@
+{
+  "name": "pie-docs",
+  "description": "the pie documentation",
+  "repository": {
+    "url": "git@github.com/PieLabs/pie-docs.git",
+    "type": "git"
+  },
+  "private": true,
+  "devDependencies": {
+    "gitbook-cli": "~2.3.0"
+  }
+}
