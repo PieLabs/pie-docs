@@ -4,4 +4,4 @@
 
 The PIE Framework provides Yeoman Generators to help bootstrap your PIE development.
 
-TODO - doc the generators.
+> TODO: This section is coming soon!

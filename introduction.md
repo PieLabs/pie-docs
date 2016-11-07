@@ -1,5 +1,7 @@
 # PIE: Portable Interaction Elements
 
+> DRAFT: the PIE Framework is currently in pre-release, information in these documents is subject to change
+
 Portable Interaction Elements \(PIE\) is an Open Source framework for building re-usable interactions and questions that can capture a user's response, analyze a user's response, and report an outcome and learning activity from the user interaction.
 
 It supports the development of highly interactive questions and assessment interactions that can be shared and distributed to run on any web-based platform, fully preserving their design and functionality.
@@ -12,6 +14,7 @@ Currently, it is quite difficult to author assessment questions that:
 - Look and behave in the same way as the author intended, regardless of which system they are used in 
 - Support more advanced interactions that are engaging and effective for assessing knowledge
 - Are simple to share between authors and learning systems while preserving support for the above 2 goals
+- Use more advanced scoring algorithms
 
 
 The PIE framework addresses this problem by providing:
@@ -35,7 +38,7 @@ In Summary, the PIE Framework:
 
 ### Does it Support Standards?
 
-PIE itself is not a standard, it is an Open Source technical implementation designed to provide an immediate solution to an existing problem. It provides tools for developing, packaging and rendering Assessment Items that use PIE interactions. Interactions that are developed and packaged using the tools provided in this framework will render correctly - on any modern web system.
+PIE itself is not a standard, it is an Open Source implementation designed to provide an immediate solution to an existing problem. It provides tools for developing, packaging and rendering Assessment Items that use PIE interactions. Interactions that are developed and packaged using the tools provided in this framework will render correctly - on any modern web system.
 
 We have great respect for the standards process and standards bodies in the education field. If at some time the format specifications used by this technology may make sense to be adopted as a standard we would welcome such a development.
 

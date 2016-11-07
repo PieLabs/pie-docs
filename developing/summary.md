@@ -1,11 +1,11 @@
 # Summary
 
-Each PIE is an individual question-type or interaction that is designed to be re-used. An example of a PIE might be a multi-choice question-type or a question-type that allows a student to make a bar chart or plot points on a graph.
+Each PIE is an individual question-type or interaction that is designed to be re-used. An example of a PIE might be a multi-choice question-type or a question-type that allows a student to make a bar chart or plot points on a graph. A PIE does not to be a question type, it can be any interaction or utility, like a Calculator or a graphing tool.
 
 To create a PIE a developer implements:
 
 1. A [Custom Element](https://www.w3.org/TR/custom-elements/) that provides the user interface for the PIE
-2. A Controller that provides the model for the UI and processes user responses to generate results/outcomes and learning activity 
+2. A Controller that provides the model for the UI and processes user responses to generate results/outcomes and learning activity (Optional)
 3. An NPM package that allows users/systems to install and use your PIE
 
 

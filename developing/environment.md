@@ -1,14 +1,17 @@
 # Environment
 
-The environment Object defines the current view-state for a PIE.
-When this property changes it the [PIE Player](../pie-player.md) passes it to the [controller](controller.md) `model` function for a PIE and the resulting model is set as a property in the PIE Custom Element. 
+The environment `env` Object helps to define the current context for a PIE as it is being viewed by a user.
+Any time this property is updated the [PIE Player](../pie-player.md) passes it to the [controller](controller.md) `model` function implemented by a PIE and the resulting model is then set as a property in the PIE Custom Element. This allows a developer to update or filter the model as neccesary to have the appropriate data available to render the view in the current context.
+
+
+## Environment Properties
 
 ```json
 {
     "view": "gather" | "view" | "evaluate" | "preview",
     "role": "student" | "instructor",
     "lang": [BCP 47 language tag],
-    "accessibility": {}
+    "options": {...}
 }
 ```
 
@@ -37,47 +40,49 @@ For localisation, the `lang` property informs the PIE of the primary language se
 The values will be [BCP 47](https://www.w3.org/International/articles/language-tags/) tags like `en_US`
 
 
-### Property: `accessibility` 
+### Property: `options`
 
-TODO - we have not filled out this property list yet
+### Reserved `options` Properties
 
+The following properties are reserved properties that can be passed in the `options` object.
 
+They are used to enable/disable and configure certain features that may be available in the assessment item.
 
-AmericanSignLanguage: Boolean
-BrailleType: String
-TDS_BT_EXN1 EBAE – Uncontracted – Nemeth Math
-TDS_BT_ECN EBAE – Contracted – Nemeth Math
-TDS_BT_EXT EBAE – Uncontracted – UEB Math
-TDS_BT_ECT EBAE – Contracted – UEB Math
-TDS_BT_UXN UEB – Uncontracted – Nemeth Math
-TDS_BT_UCN UEB – Contracted – Nemeth Math
-TDS_BT_UXT UEB – Uncontracted – UEB Math
-TDS_BT_UCT UEB – Contracted – UEB Math
-TDS_BT_G1 (legacy2) Uncontracted braille
-TDS_BT_G2 (legacy) Contracted braille
-
-
-ClosedCaptioning: Boolean
-
-ColorContrast
-Black on White (default)
- Reverse Contrast
- BlackOnRose
- Medium Gray on Light Gray
- Yellow on Blue
-
-Highlight (permit / don't permit)
-
-Mark for Review: Boolean (allowo mark for review?)
-
-Masking: Boolean
-
-NotePad Available: Boolean
-
-PermissiveMode 
-(Allows assistive technology software such as
-screen readers, magnifiers, etc. to be run
-on the computer. When disabled, only the
-secure web browser is allowed to run. )
+| Property           | Property Type | Summary                                      |
+|--------------------|---------------|----------------------------------------------|
+| calculator         | Object        | Calculator Tool, basic and advanced          |
+| notepad            | Boolean       | Note taking tool                             |
+| ruler              | Boolean       | Ruler Tool                                   |
+| protractor         | Boolean       | Protractor Tool                              |
+| masking            | Boolean       | Masking Tool                                 |
+| glossary           | Object        | Glossary Tool                                |
+| highlighter        | Boolean       | Highlighter Tool                             |
+| textToSpeech       | Boolean       | Text-to-Speech                               |
+| stackedTranslation | Boolean       | Show translations in-place near content      |
+| asl                | Boolean       | Show ASL video content if available          |
+| braille            | Object        | Options for presenting content using Brailly |
+| expandablePassages | Boolean       | Allow expanding of passage content           |
+| spellCheck         | Boolean       | Allow spell check                            |
+| zoom               | String        | Support zoom-level                           |
+| colorContrast      | String        | Support alternate color contrast             |
+| closedCaptioning   | String        | Provide closed captioning for media          |
+| strikeThrough      | Boolean       | Provide ability to strike-through options    |
 
 
+> BETA Release Note: full specification of these properties will be documented in upcoming releases of PIE framework
+
+### Custom `options` Properties
+
+PIEs that need to allow for configuration options to be added when rendering their UI may define properties that will be passed in the `env.options`.
+
+By convention, these properties should be scoped by organization name, e.g.
+
+```json
+{ 
+    "options":{
+        "corespring": {
+            "myCustomOption": "someValue"
+        }
+    } 
+}
+``` 

@@ -89,10 +89,7 @@ If you want to implement a server based controller, it has to implement the same
   })
  ```
  
-### Events
- 
-#### n/a  
-  
+
  
  
  

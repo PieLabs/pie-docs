@@ -1,8 +1,5 @@
 # Rendering Questions
 
-The basic definition of an Assessment Item is created using a `config.json` and `index.html` file (see the previous section [packaging questions](packaging-questions.md)).
-
-
 The PIE Packaging Tool assembles and packages a javascript runtime for the Assessment Item.
 
 In addition to the base definition files (`config.json` and `index.html`) a packaged item will have the following files:
@@ -12,7 +9,7 @@ In addition to the base definition files (`config.json` and `index.html`) a pack
   pie-controllers.js // the packaged controller code and config for the PIEs and Assessment Item.
 ```
 
-Using these assets the Item can be rendered in the browser. The controller logic can be run entirely on the client, or on a server if that is desired.
+Using these assets the Item can be rendered in a browser. The controller logic can be run entirely on the client or on a server system.
 
 
 ## Loading PIE Player
@@ -51,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function(){
 ```
 
 
-## Server-side execution of Controller Functions
+### Server-side execution of Controller Functions
 
 Short example of using controllers hosted on a server. See [documentation](server-side-controller.md) for complete explanation.
 
@@ -78,8 +75,3 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 ## PIE Player API
-
-### `langs()`
-
-TODO - return an array of languages available for the assessment item.
-Using this information developer loading the PIE can decide to switch the language to the user's locale or offer buttons to do this. 

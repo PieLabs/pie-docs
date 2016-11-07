@@ -1,7 +1,8 @@
 # pie-player 
-**Verification needed:** The pie-player element is generated from the html fragment and some javascript. The html fragment, which declares the pies and some optional html, is internal to it. 
+
 
 ## Html
+
 ### Custom Element <pie-player>  
 This element renders the pies.      
 It serves as the main access object for the api described below.
@@ -12,28 +13,25 @@ It serves as the main access object for the api described below.
     
 ## Javascript Api
  
-### Methods 
 
-#### Setter env 
+#### Setter: `env` 
 The player view mode can be set via the env.
  
  ```
- player.env = {mode:'gather'}
+ player.env = {view:'gather'}
  ```
   
-#### Setter session
+#### Setter: `session`
 The various user inputs are collected in this object.   
 The pies can use the session to store session related data like the order of options for example.
      
  ```
   player.session = {value:[]}
  ```
-
-#### Getter session 
-**Verification needed:** Do we want/need a getter on this level? The session object is saved internally by the controller. If we want to be able to access the updated session, can the event hold it?   
+ 
 
 
-#### Setter controller
+#### Setter: `controller`
 The controller is used by the player to calculate model changes and outcomes.
  
  ```
@@ -41,9 +39,7 @@ The controller is used by the player to calculate model changes and outcomes.
   player.controller = new pie.Controller(config.pies, pie.controllerMap); 
  ```
  
-#### completeResponse() 
-**Verification needed:** Does it dispatch a response-change event?   
-**Verification needed:** Can a session be complete, if it doesn't have all the answers?   
+#### Method: `completeResponse()`
 
  ```
  /**
@@ -65,8 +61,7 @@ The controller is used by the player to calculate model changes and outcomes.
    true
  ```
  
-#### getOutcome() 
-**Verification needed**: What should happen, when the session does not have all the answers?   
+#### Method: `getOutcome()` 
 
  ```
   /**
@@ -87,16 +82,14 @@ The controller is used by the player to calculate model changes and outcomes.
  //output
  {
     summary: { maxPoints: 7, points: 7, percentage: 100 },
-    components: [
+    pies: [
        {id: "01", score: {scaled: 1, min: 0, max:7, raw: 7}}
     ] 
  }
  ``` 
  
 
-#### getSessionStatus()
-**Verification needed:** Should it contain the session itself too?    
-**Verification needed:** Should it contain the value of isComplete?    
+#### Method: `getSessionStatus()`
 
 ```
   /**
@@ -104,6 +97,7 @@ The controller is used by the player to calculate model changes and outcomes.
    * 1. allInteractionsHaveResponse: Boolean 
    * 2. interactionCount: Number
    * 3. interactionsWithResponseCount: Number
+   * 4. isComplete: Boolean
    * @returns The method returns a Promise with the session status 
    */
    function getSessionStatus() 
@@ -118,15 +112,19 @@ The controller is used by the player to calculate model changes and outcomes.
      
     //output
     {
-      allInteractionsHaveResponse: true,
-      interactionCount: 7,
-      interactionsWithResponseCount: 7
+      status: {
+        allInteractionsHaveResponse: true,
+        interactionCount: 2,
+        interactionsWithResponseCount: 2,
+        isComplete: true,
+      },
+      session: {...}
     }
       
   ```
 
-#### isComplete() 
-**Verification needed:** Is this reporting whether completeSession has been called or can a session be completed by answering all questions?    
+#### Method: `isComplete() `
+
 
   ```
   /**
@@ -147,11 +145,11 @@ The controller is used by the player to calculate model changes and outcomes.
     false 
   ```
 
-#### reset() 
+#### Method: `reset()` 
   ```
   /**
    * Reset the session, as if it is loaded for the first time.    
-   * This includes everything stored in the session, also stashed orders.
+   * This includes everything stored in the session, including stashed orders.
    * @returns The method returns a Promise
    */
    function reset() 
@@ -166,7 +164,7 @@ The controller is used by the player to calculate model changes and outcomes.
   ```
 
         
-#### resetResponse()  
+#### Method: `resetResponse()` 
   ```
   /**
    * Reset all the changes a user has done to the interactions.   
@@ -184,9 +182,15 @@ The controller is used by the player to calculate model changes and outcomes.
     });
   ```
  
-### Events 
+#### Method `getLanguages()`
 
-#### pie-player-ready (bubbles=true) 
+Return an array of languages available for the assessment item.
+Using this information a developer loading a PIE Item can decide to switch the language to the user's locale or offer buttons to do this. 
+
+
+### Events
+
+#### Event: `pie-player-ready` (bubbles=true) 
 This event is dispatched, when the api of a pie-player is ready to be used.   
     
  ```
@@ -199,7 +203,7 @@ This event is dispatched, when the api of a pie-player is ready to be used.
  });
  ```
 
-#### response-change (bubbles=true)
+#### Event: `response-change` (bubbles=true)
 The event is dispatched, whenever the status of the current response has changed, eg. when a question is loaded, when the user interacts with a question, when a session is reset.
 The event.detail contains a sessionStatus object    
 
@@ -208,16 +212,16 @@ The event.detail contains a sessionStatus object
      console.log(evt.detail.sessionStatus); 
      
      //output
-     {
-       allInteractionsHaveResponse: false,
-       interactionCount: 7,
-       interactionsWithResponseCount: 3
-     }
+      {
+        status: {
+          allInteractionsHaveResponse: true,
+          interactionCount: 2,
+          interactionsWithResponseCount: 2,
+          isComplete: true
+        },
+        session: {...}
+      }
   });
   ```
    
 
-### `langs()`
-
-TODO - return an array of languages available for the assessment item.
-Using this information developer loading the PIE can decide to switch the language to the user's locale or offer buttons to do this. 

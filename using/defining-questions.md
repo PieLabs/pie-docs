@@ -67,7 +67,9 @@ The pie Object contains the following properties:
             },
             "choices": ["apple", "orange", "banana", "cucumber", "pea"],
             "correctChoices": ["cucumber", "pea" ],
-            {//other configuration for the PIE}
+            {
+                //other configuration for the PIE
+            }
         },
 
         {
@@ -76,7 +78,9 @@ The pie Object contains the following properties:
                 "name": "my-other-pie",
                 "version": "2.0.1"
             },
-            {//other configuration for the PIE}
+            {
+                //other configuration for the PIE
+            }
         }
     ]
 ```
@@ -121,7 +125,9 @@ The pie-player provides an api to look up which languages are supported, the lan
             },
             "choices": ["apple", "orange", "banana", "cucumber", "pea"],
             "correctChoices": ["cucumber", "pea" ],
-            {//other configuration for the PIE}
+            {
+                //other configuration for the PIE
+            }
         },
 
         {
@@ -130,7 +136,9 @@ The pie-player provides an api to look up which languages are supported, the lan
                 "name": "my-other-pie",
                 "version": "2.0.1"
             },
-            {//other configuration for the PIE}
+            {
+                //other configuration for the PIE
+            }
         }
     ]
     "weights": [

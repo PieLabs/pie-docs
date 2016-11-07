@@ -20,7 +20,7 @@ export function outcome(config, session, env) {
 
 This function is used to set the `model` property on the PIE Element. 
 
-It receives three objects as its arguments: **config**, **session**, and **env**
+It receives three objects as its arguments: **config**, **session**, and **[env](environment.md)**
 
 #### Object: config
 
@@ -34,6 +34,11 @@ It is up to the PIE developer to define what the structure of this object should
 
 This is the state of a users' response/interaction with the PIE. The PIE developer defines the structure of this object and uses it to store user responses or other data about the user's interaction.
 
+#### Object: env
+
+This object provides parameters that describe the current context in which a user is using the PIE.
+
+See [environment](environment.md) page for more information.
 
 
 
