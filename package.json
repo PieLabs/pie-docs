@@ -1,0 +1,23 @@
+{
+  "name": "pie-docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gitbook-cli": "^2.3.0"
+  },
+  "scripts": {
+    "serve": "./node_modules/.bin/gitbook serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PieLabs/pie-docs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PieLabs/pie-docs/issues"
+  },
+  "homepage": "https://github.com/PieLabs/pie-docs#readme"
+}
