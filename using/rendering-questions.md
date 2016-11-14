@@ -2,67 +2,238 @@
 
 The PIE [Packaging Tool](packaging-questions.md) is used to assemble and package the Javascript and HTML into files needed to render an Assessment Item in the browser.
 
-An Assessment Item packed by the Packaging Tool may have some or all of the following files:
+The command uses 2 input files: 
 
-| File              | Description                                                        |
+| File              | Description                                                        | 
 |-------------------|--------------------------------------------------------------------|
-| pie.js            | Single file containing all code and config to render the item      |
-| config.json       | JSON data that defines the questions & interaction PIEs in an item |
-| index.html        | Markup for adding the PIEs to html document                        |
-| pie-view.js       | Assembled Javascript for rendering the UI for the Assessment Item  |
-| pie-controller.js | Packaged controller code for the PIEs defined in the config        |
+| config.json       | JSON data that defines the questions & interaction PIEs in an item | 
+| index.html        | Markup defining the layout of the pies inside a pie-player         |
 
 
-> By convention, these files will be contained in a directory named with a unique id for the assessment item.
+It generates the following files: 
 
-> ED: 1. Does this unique id relate to what we were talking about in terms of enabling re-usability? If so the uid has a relationship with the permutation of pie names+versions used within the config/markup. It doesn't have any direct relationship with the item itself. 2. what do you maen about naming a directory? I thought we were going to output to the target directory and generate some form of manifest with any uid/build info in it.
+| File              | Description                                                        | usecase   |
+|-------------------|--------------------------------------------------------------------|-----------|
+| pie.js            | Single file containing everything needed to render the item        | simple    |
+| pie-view.js       | Assembled Javascript for rendering the UI for the Assessment Item  | advanced  |
+| pie-controller.js | Packaged controller code for the PIEs defined in the config        | advanced  |
 
+We have 2 usecases above. `simple` is the most convenient but lacks reusability, `advanced` requires more effort to use but allows for reusability. See below for more information on reuse.
 
-## Simple Usage - Client Side Only
+# simple - pie.js 
 
-The simplest way to load a PIE-formatted item is to use the `pie.js` file. This file includes everything needed to render the item in a user's browser. 
+`pie.js` is the file to use to render the item as simply as possible: 
 
-> ED: Explain a bit more what we mean by client side only?
-
-Example:
 ```html
-
-<!-- all the configuration, javascript and html for rendering the assessment item is bundled in pie-all.js -->
+<div id="player-holder"></div>
 <script src="pie.js" type="text/javascript"></script>
-
-<pie-player id="pie-player"></pie-player>
-
 <script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function(){
-  // see documentation on Environment for configuring this
-  environment = {view: 'gather'};
-  var player = document.querySelector('pie-player');
-  player.addEventListener('pie.player-ready', function(event){
-    player.env = environment;
-  });
-  // Add an event to be notified when a user has modified their response 
-  player.addEventListener('response-change', function(evt){
-    
-  });
-});
+  env = {mode: 'gather'};
+  session = [];
+  var player = pie.bootstrapPlayer('#player-holder', env, session);
+</script>
+```
 
+## pros
+* simple to use
+* only need to load 1 file
+
+## cons 
+* controller and model run in the browser - not secure
+* markup is baked into the js
+* config is baked into the js 
+* not reuasable - specific to the item
+
+
+# advanced 
+
+`pie-view.js` and `pie-controller.js` are the files to use if you want more control over the rendering.
+
+## client-side
+
+The example below renders a single `pie-player` with a client side controller.
+
+```html 
+<script src="pie-view.js"></script>
+<script src="pie-controller.js"></script>
+<!-- we declare a `pie-player` and within that tag is the markup from `index.html` -->
+<pie-player>
+  <my-pie pie-id="1"></my-pie>
+</pie-player>
+<script type="text/javascript">
+  env = {mode: 'view'};
+  session = [];
+  function loadJson(path){
+    return new Promise((function(resolve, reject){
+      //load the json here ...
+    }));
+  }
+  /** listen for the `pie.player-ready` event */  
+  document.addEventListener('pie.player-ready', function(event){
+    loadJson('config.json').then(config => {
+      var player = event.target;
+      player.env = env;
+      player.session = session;
+      /** 
+       * instantiate a PieController and assign it to the `pie-player`. 
+       * `pie.controllerMap` is where to find the controller map logic.
+       */
+      player.controller = new pie.PieController(config, pie.controllerMap);
+    }).catch(e => throw e);
+  });
 </script>
 
 ```
-> ED: In the sample above you're not setting the session, but I don't think the logic in `pie.js` should be setting the session either, this array is something that the end-user(dev) will want to inject.
 
-For complete documentation on interacting with the `pie-player` element, see the [PIE Player API](api/pie-player.md)
+### pros 
 
+* better control over initialisation
+* `pie-view.js` and `pie-controller.js` are reusable outside of the item.
 
-## Advanced Usage, Server-Side Usage
+### cons 
 
-> ED: Advanced usage isn't the same as server side usage. It just means that you have finer grained control, but you can still do a client side only option if you want, so I'd have 2 examples here + explain what's happening.
+* controller and model run in the browser - not secure
+* 2 files to load 
+* more logic needed to render the player  
 
-If you want finer control over how to use the PIE-formatted item, or want to use the Assessment Item in a secure-testing environment where data, including correct-responses, is not sent to the client you can use the other files in a packaged item:
+## server-side 
 
+The example below renders a single `pie-player` with a remote controller.
 
-TODO
+```html 
+<script src="pie-view.js"></script>
+<script src="pie-remote-controller.js"></script>
+<!-- we declare a `pie-player` and within that tag is the markup from `index.html` -->
+<pie-player>
+  <my-pie pie-id="1"></my-pie>
+</pie-player>
+<script type="text/javascript">
+  env = {mode: 'view'};
+  session = [];
 
+  endpoints: {
+    model: {
+      method: 'POST',
+      url: '/model'
+    },
+    outcome: {
+      method: 'POST',
+      url: '/outcome'
+    }
+  }
 
+  function loadJson(path){
+    return new Promise((function(resolve, reject){
+      //load the json here ...
+    }));
+  }
+  /** listen for the `pie.player-ready` event */  
+  document.addEventListener('pie.player-ready', function(event){
+    loadJson('config.json').then(config => {
+      var player = event.target;
+      player.env = env;
+      player.session = session;
+      /** 
+       * instantiate a PieController and assign it to the `pie-player`. 
+       * `pie.controllerMap` is where to find the controller map logic.
+       */
+      player.controller = new PieRemoteController(endpoints);
+    }).catch(e => throw e);
+  });
+</script>
+```
+Below is a possible server implementation running as a commonjs node module:
 
+```javascript
+const http = require('http');
+const pie = require('./pie-controller');
+const config = JSON.parse(fs.readFileSync('./config.json'));
+const controller = new pie.PieController(config, pie.controllerMap);
 
+let handleError = (res) => {
+  return (err) => {
+    res.writeHead(500, {'Content-Type' : 'text/plain'});
+    res.write(err.toString());
+    res.end();
+  }
+}
+
+server = http.createServer((req, res) => {
+
+  if(req.url === '/model' && req.method === 'POST'){
+
+    //parse session + env from the request body ...
+    controller.model(config, session, env)
+      .then(model => {
+        res.writeHead(200, {'Content-Type' : 'application/json'});
+        res.write(JSON.stringify(model));
+        res.end();
+      }).catch(handleError(res))
+  } else if (req.url = '/outcome' && req.method === 'POST'){
+    //parse session + env from the request body ...
+    controller.outcome(config, session, env)
+      .then(outcome => {
+        res.writeHead(200, {'Content-Type' : 'application/json'});
+        res.write(JSON.stringify(outcome));
+        res.end();
+      }).catch(handleError(res))
+  } else {
+    res.writeHead(404)
+    res.write('');
+    res.end();
+  }
+}
+
+server.on('listening', () => console.log('server listening...'));
+server.listen(process.env.PORT || 5001);
+
+```
+
+### pros 
+
+* better control over initialisation
+* secure - controller and config are run on the server away from the browser
+
+### cons
+
+* requires a server to run the controller logic.
+
+# Reuse 
+
+When you pack a question there are 2 files generated that are reusable. This is because they contain logic only related to the `pies` used by the question. They don't contain any logic relating to the question itself. 
+
+Say we have 1 question that has: 
+
+```javascript
+{ 
+  pies: [
+    { 
+      pie: { 
+        name: 'my-pie', 
+        version: '1.0.0'
+      }, 
+      prompt: 'question 1'
+    }
+  ]
+}
+```
+And another like so: 
+```javascript
+{ 
+  pies: [
+    { 
+      pie: { 
+        name: 'my-pie', 
+        version: '1.0.0'
+      }, 
+      prompt: 'question 2'
+    }
+  ]
+}
+```
+
+Both these questions use `my-pie@1.0.0`, so the `pie-view.js` + `pie-controller.js` built for question 1 would work for question 2. Because the generation of these files is an intensive task it would be better if you could skip the generation if you already have built the source and so can reuse it.
+
+To assist with reuse, `pack-question` will also generate a manifest alongside `pie-view.js` and `pie-controller.js`. The manifest will describe exactly what versions of each pie have been bundled. Using this manifest you can decide whether or not you need to run a build or not.
+
+## TODO: fleshout manifest format + api?
