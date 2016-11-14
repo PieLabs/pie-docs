@@ -226,14 +226,21 @@ And another like so:
         name: 'my-pie', 
         version: '1.0.0'
       }, 
-      prompt: 'question 2'
+      prompt: 'question 2.a'
+    },
+    { 
+      pie: { 
+        name: 'my-pie', 
+        version: '1.0.0'
+      }, 
+      prompt: 'question 2.b'
     }
   ]
 }
 ```
 
-Both these questions use `my-pie@1.0.0`, so the `pie-view.js` + `pie-controller.js` built for question 1 would work for question 2. Because the generation of these files is an intensive task it would be better if you could skip the generation if you already have built the source and so can reuse it.
+Both these questions use `my-pie@1.0.0`, so the `pie-view.js` + `pie-controller.js` built for question 1 would work for question 2. Because the generation of these files is an intensive task it would be better if you could skip the generation if you already have built the source and so can *reuse* it.
 
 To assist with reuse, `pack-question` will also generate a manifest alongside `pie-view.js` and `pie-controller.js`. The manifest will describe exactly what versions of each pie have been bundled. Using this manifest you can decide whether or not you need to run a build or not.
 
-## TODO: fleshout manifest format + api?
+* TODO: fleshout manifest format + api?
