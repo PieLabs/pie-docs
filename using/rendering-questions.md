@@ -198,6 +198,7 @@ server.listen(process.env.PORT || 5001);
 
 * requires a server to run the controller logic.
 
+
 # Reuse 
 
 When you pack a question there are 2 files generated that are reusable. This is because they contain logic only related to the `pies` used by the question. They don't contain any logic relating to the question itself. 
@@ -244,3 +245,36 @@ Both these questions use `my-pie@1.0.0`, so the `pie-view.js` + `pie-controller.
 To assist with reuse, `pack-question` will also generate a manifest alongside `pie-view.js` and `pie-controller.js`. The manifest will describe exactly what versions of each pie have been bundled. Using this manifest you can decide whether or not you need to run a build or not.
 
 * TODO: fleshout manifest format + api?
+
+
+## Example with multiple players running on the same page 
+
+> We don't support this out of the box, but it *should* be possible. Below is a vague stab at what that might look like:
+
+Say you want to have multiple players running on a single page... here are the steps to go through:
+
+```html 
+<!-- combined-pie-view.js a combined ui build for the custom elements? 
+  other option would be to namespace the elements (but that would lead to duplication + lack of reusability)
+-->
+<script type="text/javascript" src="combined-pie-view.js"></script>
+<pie-player id="1">
+  <my-pie version="1.0.0" pie-id="1"></my-pie>
+</pie-player>
+<pie-player id="2">
+  <my-pie version="1.0.0" pie-id="1"></my-pie>
+</pie-player>
+<script type="text/javascript">
+
+  document.addEventListener('pie.player-ready', function(event){
+    var player = event.target;
+    var id = player.getAttribute('id');
+    //TODO need a way to map the player id to a controllerMap to serve that player.
+    //maybe build the controller map? `pie.buildControllerMap(player.pieManifest)`?
+    var controller = new PieController(loadConfig(id), pie.buildControllerMap(player.pieManifest));
+    player.env = envs[id];
+    player.sesion = sessions[id];
+    player.controller = controller;
+  });
+</script>
+```
