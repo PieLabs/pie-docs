@@ -51,7 +51,7 @@ Example:
 
 
 
-## Advance Packaging - Code Reuse
+## Advanced Packaging - Code Reuse
 
 
 If you are packaging a lot of assessment items, you can optimize the process by reusing the same javasript code for items that use the same sets of `pies`.
@@ -98,6 +98,14 @@ And another that has:
 ```
 
 Both of these assessment items use `my-pie@1.0.0`, so the `pie-view.js` + `pie-controller.js` built for question 1 would work for question 2. 
+
+The PIE cli tool provides an option to help with reusing generated code:
+
+`pie manifest-id`
+
+Creates a unique ID that represents the PIEs (and their versions) that are included in the config.
+Using this ID you can store generated code by ID and reference to see if it has already been created before packing a new item.
+
 
 
 
