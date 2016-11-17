@@ -1,6 +1,6 @@
 # Defining Questions
 
-Each PIE is a re-usable question/interaction-type.
+Each PIE is a re-usable question or interaction-type.
 
 An Assessment Item is one or more PIE interactions configured by a content author to present questions or interactions to a student.
 
