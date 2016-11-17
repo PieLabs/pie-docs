@@ -4,6 +4,7 @@
  - [Defining Questions](using/defining-questions.md)
  - [Packaging Questions](using/packaging-questions.md)
  - [Rendering Questions](using/rendering-questions.md)
+ - [Example](using/example.md) 
  - APIs
    - [PIE Player](using/api/pie-player.md)
    - [PIE Controller](using/api/pie-controller.md)
