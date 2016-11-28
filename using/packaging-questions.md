@@ -20,7 +20,7 @@ When an Assessment Item is packaged the packaging tool adds the following javasc
 
 ## Packaging for Client Side Only
 
-The `pie` cli has an option [todo - define] that will additionally add the following file to the packaged item:
+The `pie` cli has a boolean option `-C --client-only-bundle` that will additionally add the following file to the packaged item:
 
 | File              | Description                                                        |
 |-------------------|--------------------------------------------------------------------|
