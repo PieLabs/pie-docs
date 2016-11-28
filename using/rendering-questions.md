@@ -1,77 +1,183 @@
 # Rendering Questions
 
-The PIE Packaging Tool assembles and packages a javascript runtime for the Assessment Item.
+The PIE [Packaging Tool](packaging-questions.md) is used to assemble and package the Javascript and HTML into files needed to render an Assessment Item in the browser.
 
-In addition to the base definition files (`config.json` and `index.html`) a packaged item will have the following files:
+An Assessment Item packed by the Packaging Tool may have some or all of the following files:
 
-```
-  pie.js // assembled Javascript for rendering the UI for the Assessment Item in <pie-player/>
-  pie-controllers.js // the packaged controller code and config for the PIEs and Assessment Item.
-```
-
-Using these assets the Item can be rendered in a browser. The controller logic can be run entirely on the client or on a server system.
-
-
-## Loading PIE Player
-
-The PIE Player Javascript defines a Custom Element `pie-player` this can be added to an HTML page to render the assessment item.
-
-To configure the player the `config` json and `env` properties are set. If loading an existing user session, the `session` property could be loaded and set.
-
-The following example shows how to load the player using client-side controller.  
+| File              | Description                                                        |
+|-------------------|--------------------------------------------------------------------|
+| pie.js            | Single file containing all code and config to render the item      |
+| config.json       | JSON data that defines the questions & interaction PIEs in an item |
+| index.html        | Markup for adding the PIEs to html document                        |
+| pie-view.js       | Assembled Javascript for rendering the UI for the Assessment Item  |
+| pie-controller.js | Packaged controller code for the PIEs defined in the config        |
 
 
+
+
+
+## Simple Usage - Client Side Only
+
+The simplest way to load a PIE-formatted item is to use the `pie.js` file. This file includes everything needed to render the item in a user's browser. 
+
+Example:
 ```html
 
-<pie-player id="pie-player"></pie-player>
-
-<!-- all the code and html for rendering the assessment item is bundled in pie.js -->
+<!-- all the configuration, javascript and html for rendering the assessment item is bundled in pie-all.js -->
+<div id="player-holder"></div>
 <script src="pie.js" type="text/javascript"></script>
-<!-- pie-controller.js includes the configuration and controller methods -->
-<script src="pie-controller.js" type="text/javascript"></script>
 <script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function(){
-  // see documentation on Environment for configuring this
-  environment = {view: 'gather'};
-  var player = document.querySelector('pie-player');
-  player.addEventListener('pie-player-ready', function(event){
-    player.controller = new pie.Controller();
-    player.env = environment;
-  });
-  player.addEventListener('response-change', function(evt){
-    // triggered when a user modifies their response
-  });
-});
+  env = {mode: 'gather'};
+  session = [];
+  var player = pie.bootstrapPlayer('#player-holder', env, session);
+</script>
 
+```
+
+For complete documentation on interacting with the `pie-player` element, see the [PIE Player API](api/pie-player.md)
+
+
+## Advanced & Server-Side Usage
+
+If you want finer control over how to use the PIE-formatted assessment item, or want to use it in a secure-testing environment where data, including correct-responses, are not sent to the client you can use the other files in a packaged item: `pie-view.js` and `pie-controller.js`
+
+### Client Side Example
+
+
+The example below renders a single `pie-player` with a client side controller. Using this approach gives you finer grained control over initialization, but all the data for the config is downloaded to the browser. 
+
+```html 
+<script src="pie-view.js"></script>
+<script src="pie-controller.js"></script>
+<!-- we declare a `pie-player` and within that tag is the markup from `index.html` -->
+<pie-player>
+  <my-pie pie-id="1"></my-pie>
+</pie-player>
+<script type="text/javascript">
+  env = {mode: 'view'};
+  session = [];
+  function loadJson(path){
+    return new Promise((function(resolve, reject){
+      //load the json here ...
+    }));
+  }
+  /** listen for the `pie.player-ready` event */  
+  document.addEventListener('pie.player-ready', function(event){
+    loadJson('config.json').then(config => {
+      var player = event.target;
+      player.env = env;
+      player.session = session;
+      /** 
+       * instantiate a PieController and assign it to the `pie-player`. 
+       * `pie.controllerMap` is where to find the controller map logic.
+       */
+      player.controller = new pie.PieController(config, pie.controllerMap);
+    }).catch(e => throw e);
+  });
 </script>
 
 ```
 
 
-### Server-side execution of Controller Functions
+### Server Side Example
 
-Short example of using controllers hosted on a server. See [documentation](server-side-controller.md) for complete explanation.
+In some cases, such as for secure test delivery, it is desirable to render items using a remote server to run the controller logic provided by the PIEs in an assessment item.  
 
+The example below renders a single `pie-player` with a remote controller.
 
-```
-<pie-player id="pie-player"></pie-player>
-<!-- all the code and html for rendering the assessment item is bundled in pie.js -->
-<script src="pie.js" type="text/javascript"></script>
-<!-- using utility library to map controller calls to a server - see full documentation on server-side controllers -->
-<script src="/node_modules/pie-remote-controller/pie-remote-controller.js" type="text/javascript"></script>
+```html 
+<script src="pie-view.js"></script>
+<script src="pie-remote-controller.js"></script>
+<!-- we declare a `pie-player` and within that tag is the markup from `index.html` -->
+<pie-player>
+  <my-pie pie-id="1"></my-pie>
+</pie-player>
 <script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function(){
-  env = {view: 'gather'};
-  session = [];  
-  var player = document.querySelector('pie-player');
-  player.addEventListener('pie-player-ready', function(event){
-    var route = "/my/server/items/:itemId/";
-    player.controller = new pie.RemoteController(route);
-    player.env = env;
-    player.session = session;
+  env = {mode: 'view'};
+  session = [];
+
+  endpoints: {
+    model: {
+      method: 'POST',
+      url: '/model'
+    },
+    outcome: {
+      method: 'POST',
+      url: '/outcome'
+    }
+  }
+
+  function loadJson(path){
+    return new Promise((function(resolve, reject){
+      //load the json here ...
+    }));
+  }
+  /** listen for the `pie.player-ready` event */  
+  document.addEventListener('pie.player-ready', function(event){
+    loadJson('config.json').then(config => {
+      var player = event.target;
+      player.env = env;
+      player.session = session;
+      /** 
+       * instantiate a PieController and assign it to the `pie-player`. 
+       */
+      player.controller = new PieRemoteController(endpoints);
+    }).catch(e => throw e);
   });
-});	
+</script>
 ```
 
 
-## PIE Player API
+Below is a possible server implementation running as a commonjs node module:
+
+```javascript
+const http = require('http');
+const pie = require('./pie-controller');
+const config = JSON.parse(fs.readFileSync('./config.json'));
+const controller = new pie.PieController(config, pie.controllerMap);
+
+let handleError = (res) => {
+  return (err) => {
+    res.writeHead(500, {'Content-Type' : 'text/plain'});
+    res.write(err.toString());
+    res.end();
+  }
+}
+
+server = http.createServer((req, res) => {
+
+  if(req.url === '/model' && req.method === 'POST'){
+
+    //parse session + env from the request body ...
+    controller.model(config, session, env)
+      .then(model => {
+        res.writeHead(200, {'Content-Type' : 'application/json'});
+        res.write(JSON.stringify(model));
+        res.end();
+      }).catch(handleError(res))
+  } else if (req.url = '/outcome' && req.method === 'POST'){
+    //parse session + env from the request body ...
+    controller.outcome(config, session, env)
+      .then(outcome => {
+        res.writeHead(200, {'Content-Type' : 'application/json'});
+        res.write(JSON.stringify(outcome));
+        res.end();
+      }).catch(handleError(res))
+  } else {
+    res.writeHead(404)
+    res.write('');
+    res.end();
+  }
+}
+
+server.on('listening', () => console.log('server listening...'));
+server.listen(process.env.PORT || 5001);
+
+```
+
+
+
+
+
+
+

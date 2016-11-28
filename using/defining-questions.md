@@ -1,6 +1,6 @@
 # Defining Questions
 
-Each PIE is a re-usable question/interaction-type.
+Each PIE is a re-usable question or interaction-type.
 
 An Assessment Item is one or more PIE interactions configured by a content author to present questions or interactions to a student.
 
@@ -18,6 +18,8 @@ These files are placed in a directory structure which may also contain any asset
     index.html
     picture-one.png
 ```
+
+> For development purposes, a `depencencies.json` file may be also be added to the directory. This is described below.
 
 ### Config JSON
 
@@ -101,14 +103,7 @@ A calculated score for the assessment item will take these weights into account.
     ]
 ```
 
-#### `langs` (optional)
 
-Defines the translations that are available for the item. 
-The pie-player provides an api to look up which languages are supported, the langauge to use is set by using the `lang` property in the `env` object passed to the PIEs.
-
-```json
-  "langs": ["en_US", "es_ES", "zh_CN"]
-```
 
 #### Example:
 
@@ -154,9 +149,6 @@ The pie-player provides an api to look up which languages are supported, the lan
 
 
 
-
-
-
 #### HTML
 
 The HTML file defines the placement of the PIEs within HTML markup.
@@ -174,3 +166,13 @@ Here is question two:
 <my-other-pie id="2"></my-other-pie>
 ```
 
+### dependencies.json
+
+The PIEs defined in `config.json` are downloaded and packaged as NPM libraries. If for development purposes you wich to load these PIEs from a local directory or from a git url you can add a `dependencies.json` file. This file accepts NPM style URIs for pacakges.
+
+example: dependencies.json
+```json
+    {
+    "corespring-multiple-choice" : "../.."
+    }
+```
