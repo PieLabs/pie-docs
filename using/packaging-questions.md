@@ -1,13 +1,13 @@
 # Packaging Questions
 
 
-The `config.json` and `index.html` files, along with other assets such as media files make up the definition of an Assessment Item (one or more questions and interactions that use PIEs).
+The `config.json` and `index.html` files, along with other assets such as media files make up the definition of an Assessment Item.
 
 For this Item to be presented in a browser the Javascript code for rendering the PIE Custom Elements and Controller logic needs to be assembled.
 
 The [PIE CLI](https://github.com/PieLabs/pie-cli) provides a packaging tool that will package and assemble the PIE code and all dependencies needed for rendering. 
 
-> pie pack [item directory, defaults to current directory]
+```pie pack-question [item directory, defaults to current directory]```
 
 When an Assessment Item is packaged the packaging tool adds the following javascript files to the item definition by default: 
 
@@ -54,7 +54,7 @@ Example:
 ## Advanced Packaging - Code Reuse
 
 
-If you are packaging a lot of assessment items, you can optimize the process by reusing the same javasript code for items that use the same sets of `pies`.
+If you are packaging a lot of assessment items, you can optimize the process by reusing the same javascript code for items that use the same sets of `pies`.
 
 When you pack a question there are 2 files generated that are reusable, `pie-view.js` and `pie-controller.js`. This is because they contain logic only related to the `pies` used by the question. They don't contain any logic relating to the question itself. 
 
@@ -99,11 +99,11 @@ And another that has:
 
 Both of these assessment items use `my-pie@1.0.0`, so the `pie-view.js` + `pie-controller.js` built for question 1 would work for question 2. 
 
-The PIE cli tool provides an option to help with reusing generated code:
+The PIE cli tool provides a command to help with reusing generated code:
 
-`pie manifest-id`
+`pie manifest-id [item directory, defaults to current directory]`
 
-Creates a unique ID that represents the PIEs (and their versions) that are included in the config.
+Returns a unique ID that represents the PIEs (and their versions) that are included in the config.
 Using this ID you can store generated code by ID and reference to see if it has already been created before packing a new item.
 
 

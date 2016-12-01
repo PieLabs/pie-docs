@@ -7,8 +7,8 @@ A simple example could be a single Multi-Choice question with text prompt and ch
 To define an Assessment Item a user (or authoring system) creates a JSON and HTML file: 
 
 
-- **config.json** - Contains the definition and configuration for the PIEs used in the item.
-- **index.html** - Contains the PIE Custom Element declarations, and may position them within other html.
+- **config.json** - Contains the definition and configuration data for the PIEs used in the item.
+- **index.html** - Contains the Custom Element declarations within html markup.
 
 These files are placed in a directory structure which may also contain any assets that the PIE needs at runtime such as images or media.
 
@@ -19,7 +19,7 @@ These files are placed in a directory structure which may also contain any asset
     picture-one.png
 ```
 
-> For development purposes, a `depencencies.json` file may be also be added to the directory. This is described below.
+> For development purposes, a `depencencies.json` file may be also be added to the directory. This is described at the end of this page.
 
 ### Config JSON
 
@@ -57,7 +57,7 @@ Each property in the `elements` object defines the Element name, and the value d
 }
 ```
 
-#### `models` (required)
+#### `models` 
 
 An array of Objects providing configuration data for Interaction Elements in the Assessment Item.
 
@@ -70,8 +70,8 @@ Unique id (within the definition) for the defined PIE
 
 ##### `element` (required)
 
-This is the Element name/type. 
-The element and version must be defined in the `elements` property (see above)
+This is the Element name/tag name. 
+To define a model for an instance of an Element the element and version must be defined in the `elements` property (see above)
 
 
 ```json
@@ -88,10 +88,7 @@ The element and version must be defined in the `elements` property (see above)
 
         {
             "id": "2",
-            "pie": {
-                "name": "my-other-pie",
-                "version": "2.0.1"
-            },
+            "element": "my-other-pie",
             {
                 //other configuration for the PIE
             }
@@ -103,7 +100,7 @@ The element and version must be defined in the `elements` property (see above)
 
 #### `weights` (optional)
 
-This Object is optional, it defines the score weighting for each PIE included in the definition.
+This Object defines the score weighting for each PIE included in the definition.
 A calculated score for the assessment item will take these weights into account.
 
 ```json
@@ -130,11 +127,7 @@ A calculated score for the assessment item will take these weights into account.
     "models": [
         {
             "id": "1",
-            "element": "my-multi-choice-pie"
-            "pie": {
-                    "name": "my-multi-choice-pie",
-                    "version": "^1.0.0"
-            },
+            "element": "my-multi-choice-pie",
             "choices": ["apple", "orange", "banana", "cucumber", "pea"],
             "correctChoices": ["cucumber", "pea" ],
             {
@@ -152,13 +145,12 @@ A calculated score for the assessment item will take these weights into account.
     "weights": [
         {"id":"1", "weight": "2"},
         {"id":"2", "weight": "1"}
-    ],
-    "langs": ["en_US", "es_ES", "zh_CN"]
+    ]
 }
 ```
 
 
-> Each PIE defines and documents the JSON model needed for that question/interaction type. In typical usage an authoring tool will be used to create the question definitions.
+> Each PIE can define and documents the JSON schema needed for its configuration. In typical usage an authoring tool will be used to create the question definitions.
 
 
 
@@ -166,17 +158,17 @@ A calculated score for the assessment item will take these weights into account.
 
 The HTML file defines the placement of the PIEs within HTML markup.
 
-The `id` attribute in the html references the `id` of the PIE defined in the JSON.
+The `pie-id` attribute in the html references the `id` of the PIE defined in the JSON.
 
 Example:
 
 `index.html`
 ```html
 Here is question one:
-<my-pie id="1"></my-pie>
+<my-multi-choice-pie pie-id="1"></my-multi-choice-pie>
 <p/>
 Here is question two:
-<my-other-pie id="2"></my-other-pie>
+<my-other-pie pie-id="2"></my-other-pie>
 ```
 
 ### dependencies.json

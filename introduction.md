@@ -1,6 +1,6 @@
 # PIE: Portable Interaction Elements
 
-> DRAFT: the PIE Framework is currently in pre-release, information in these documents is subject to change
+> NOTE: the PIE Framework is currently in pre-release, information in these documents is subject to change
 
 Portable Interaction Elements \(PIE\) is an Open Source framework for building re-usable interactions and questions that can capture a user's response, analyze a user's response, and report an outcome and learning activity from the user interaction.
 
@@ -19,9 +19,10 @@ Currently, it is quite difficult to author assessment questions that:
 
 The PIE framework addresses this problem by providing:
 
-- A framework and tools for developing re-usable assessment interactions (Portable Interaction Elements - PIEs)
+- A framework and tools for developing re-usable assessment interactions and UI elements (Portable Interaction Elements - PIEs)
 - An Open Source Player, for rendering assessments that use PIEs
-- An Open Source format and tools, for sharing assessments in a 'binary' format that preserves the exact behaviour and design of the assessment item.
+- An Open Source format and tools, for sharing assessments in a 'binary' format that preserves the exact behaviour and design of the Assessment Item.
+- A suite of Open Source PIEs including a variety of question types and tools 
 
 
 ### How Does it Work?
@@ -38,9 +39,9 @@ In Summary, the PIE Framework:
 
 ### Does it Support Standards?
 
-PIE itself is not a standard, it is an Open Source implementation designed to provide an immediate solution to an existing problem. It provides tools for developing, packaging and rendering Assessment Items that use PIE interactions. Interactions that are developed and packaged using the tools provided in this framework will render correctly - on any modern web system.
+PIE itself is not a standard, it is an Open Source implementation designed to provide an immediate working solution to an existing problem. It provides tools for developing, packaging and rendering Assessment Items that use PIE interactions and elements. Interactions that are developed and packaged using the tools provided in this framework will render correctly - on any modern web system.
 
-We have great respect for the standards process and standards bodies in the education field. If at some time the format specifications used by this technology may make sense to be adopted as a standard we would welcome such a development.
+We have great respect for the standards process and standards bodies in the education field. If at some time the format definitions used by this technology may make sense to be adopted as a standard we would welcome such a development.
 
 ##### Caliper / Tin Can / CMI5
 PIE supports exporting activity events during the lifecycle of user interaction with PIEs. Support for IMS Caliper/ ADLnet Tin Can/CMI5 is possible using this model.

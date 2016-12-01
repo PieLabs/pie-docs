@@ -1,9 +1,9 @@
 # PieController 
 
-[todo] - clarify that this is server only
 
 A PieController is responsible for delegating calls to the pie controllers.  
-The default controller is purely client side. It directly delegates to the pie controller methods.   
+The default controller is purely client side. It directly delegates to the controller methods provided by the PIEs used in the Assessment Item.
+  
 In a server based scenario the controller would delegate the calls to the backend.                   
 
 ## ES5 access 
