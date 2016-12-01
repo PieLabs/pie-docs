@@ -30,7 +30,7 @@ The PIE framework takes the approach that web-standards should be adopted wherev
 
 In Summary, the PIE Framework:
 
-- uses [Custom Elements](https://www.w3.org/TR/custom-elements/) to define PIE's re-usable UI Elements
+- uses [Custom Elements](https://www.w3.org/TR/custom-elements/) to define re-usable UI Elements
 - uses JSON data to configure questions/interactions
 - uses NPM for the definition of PIEs and for dependency resolution
 - uses module bundling and packing techniques to create optimized shareable 'binary' bundles for rendering items

@@ -1,10 +1,10 @@
 # Defining Questions
 
-Each PIE is a re-usable question or interaction-type.
+Using PIEs, an author can define an Assessment Item, which is one or more questions, interactions, and UI elements that can be presented to a user in a browser. 
 
-An Assessment Item is one or more PIE interactions configured by a content author to present questions or interactions to a student.
+A simple example could be a single Multi-Choice question with text prompt and choices. A more advanced example might include more than one question or interaction type, and include content like text passages, video,  or charts.
 
-To define an Assesment Item using one or more PIEs a user (or authoring system) creates a JSON and HTML file: 
+To define an Assessment Item a user (or authoring system) creates a JSON and HTML file: 
 
 
 - **config.json** - Contains the definition and configuration for the PIEs used in the item.
@@ -25,7 +25,6 @@ These files are placed in a directory structure which may also contain any asset
 
 The `config.json` file defines the configuration for the Assessment Item and for the PIEs in the Item. For example a configuration for a mult-choice PIE question would include the choices, and the correct responses. 
 
-
 The JSON definition contains the following properties:
 
 
@@ -41,9 +40,26 @@ If this property is not defined, the latest version of `pie-player` will be used
 [Semver](http://semver.org) versioning is used. 
 
 
-#### `pies` (required)
+#### `elements` (required)
 
-An array of Objects specifying and configuring each PIE in the Assessment Item.
+The `elements` object defined all the PIEs that are used in the Assessment Item.
+
+Each property in the `elements` object defines the Element name, and the value defines the version of the Element.
+
+> versions are defined using [semver](http://semver.org) syntax
+
+```json
+{
+    "elements" : {
+        "my-pie-element": "1.0.0",
+        "another-element": "1.0.0" 
+    }
+}
+```
+
+#### `models` (required)
+
+An array of Objects providing configuration data for Interaction Elements in the Assessment Item.
 
 Each of these Objects contains the following required properties:
 
@@ -52,21 +68,17 @@ Each of these Objects contains the following required properties:
 
 Unique id (within the definition) for the defined PIE
 
-##### `pie` (required)
+##### `element` (required)
 
-The pie Object contains the following properties:
+This is the Element name/type. 
+The element and version must be defined in the `elements` property (see above)
 
-- name : the name of the pie (this is the same as the NPM name, and is used for the Custom Element in HTML)
-- version: the [semver](http://semver.org) version of the PIE to use in this package.
 
 ```json
-    "pies": [
+    "models": [
         {
             "id": "1",
-            "pie": {
-                 "name": "my-multi-choice-pie",
-                 "version": "^1.0.0"
-            },
+            "element":"my-multi-choice-pie",
             "choices": ["apple", "orange", "banana", "cucumber", "pea"],
             "correctChoices": ["cucumber", "pea" ],
             {
@@ -111,12 +123,17 @@ A calculated score for the assessment item will take these weights into account.
 ```json
 {
     "player": {"pie-player": "~1.0.1"},
-      "pies": [
+    "elements": {
+        "my-multi-choice-pie": "^1.0.0",
+        "my-other-pie": "2.0.1"  
+    }
+    "models": [
         {
             "id": "1",
+            "element": "my-multi-choice-pie"
             "pie": {
-                 "name": "my-multi-choice-pie",
-                 "version": "^1.0.0"
+                    "name": "my-multi-choice-pie",
+                    "version": "^1.0.0"
             },
             "choices": ["apple", "orange", "banana", "cucumber", "pea"],
             "correctChoices": ["cucumber", "pea" ],
@@ -124,13 +141,9 @@ A calculated score for the assessment item will take these weights into account.
                 //other configuration for the PIE
             }
         },
-
         {
             "id": "2",
-            "pie": {
-                "name": "my-other-pie",
-                "version": "2.0.1"
-            },
+            "element": "my-other-pie",
             {
                 //other configuration for the PIE
             }

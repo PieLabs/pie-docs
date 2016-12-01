@@ -16,7 +16,6 @@
  - [Packaging](developing/packaging.md)
  - [Environment](developing/environment.md)
  - [Using Modules](developing/using-modules.md)
- - [Yeoman Generators](developing/yeoman-generators.md)
 
 
 

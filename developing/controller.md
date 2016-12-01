@@ -67,3 +67,6 @@ The `outcome.score` property has the following model:
 | raw      | Number | Decimal number between min and max (if present, otherwise unrestricted), inclusive | Optional    |
 | min      | Number | Decimal number less than max (if present)                                          | Optional    |
 | max      | Number | Decimal number greater than min (if present)                                       | Optional    |
+
+
+> Providing a controller is optional. If one is not provided the default behaviour will be that the entire model defined in `config.json` for the instance of the PIE will be set to the model property. 

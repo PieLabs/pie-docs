@@ -23,7 +23,8 @@ The simplest way to load a PIE-formatted item is to use the `pie.js` file. This 
 Example:
 ```html
 
-<!-- all the configuration, javascript and html for rendering the assessment item is bundled in pie-all.js -->
+<!-- all the configuration, javascript and html for rendering 
+the assessment item is bundled in pie.js -->
 <div id="player-holder"></div>
 <script src="pie.js" type="text/javascript"></script>
 <script type="text/javascript">
