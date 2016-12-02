@@ -3,8 +3,8 @@
     {
       "id": "1",
       "pie": {
-        "name": "corespring-multiple-choice-react",
-        "version": "1.0.0",
+        "name": "corespring-choice",
+        "version": "1.1.0",
         "langs": [
           "en-US", "es-ES", "zh-CN"
         ]
@@ -80,8 +80,8 @@
     {
       "id": "2",
       "pie": {
-        "name": "corespring-placement-ordering-react",
-        "version": "1.0.0",
+        "name": "corespring-placement-ordering",
+        "version": "1.3.0",
         "langs": ["en-US","es-ES", "zh-CN"]
       },
        "correctResponse": [
