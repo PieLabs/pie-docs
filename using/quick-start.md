@@ -29,7 +29,7 @@ Download these item definition files and save them in a directory on your system
 
 In a terminal, cd into the directory in which you downloaded the sample files above. Then run the following command:
 
-```pie pack --buildExample```
+```pie pack```
 
 This will generate the javascript code needed to render the assessment item.
 
