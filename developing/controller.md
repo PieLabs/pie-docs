@@ -1,6 +1,6 @@
 # Controller
 
-The PIE Controller is the logic provided by your PIE to set the model for the PIE Element for the user interface and to process a user's session to provide an outcome. 
+The PIE Controller is logic that can be provided by your PIE to set the model for the PIE Element for the user interface and to process a user's session to provide an outcome. 
 
 This module should export two functions, `model` and `outcome`
 
@@ -26,7 +26,7 @@ It receives three objects as its arguments: **config**, **session**, and **[env]
 
 This is the definition of the question/configuration for the question as provided by the author using the PIE to create an interaction or question.
 
-It is up to the PIE developer to define what the structure of this object should be based on the needs of the interaction type.
+It is up to you as the PIE developer to define what the structure of this object should be based on the needs of the interaction type.
 
 
 
@@ -67,3 +67,6 @@ The `outcome.score` property has the following model:
 | raw      | Number | Decimal number between min and max (if present, otherwise unrestricted), inclusive | Optional    |
 | min      | Number | Decimal number less than max (if present)                                          | Optional    |
 | max      | Number | Decimal number greater than min (if present)                                       | Optional    |
+
+
+

@@ -1,11 +1,11 @@
 # Quick Start
 
-This is a quick demonstration of how to define, package and render an assessment item. 
+This is a quick demonstration of how to define, package and render an Assessment Item. 
 
 
 ## Getting Started
 
-To package and view the example assessment item we will use the PIE CLI toolkit, this can be installed by using the following command in a terminal window.
+To package and view the example Assessment Item we will use the PIE CLI toolkit, this can be installed by using the following command in a terminal window.
 
 ```shell
 npm install -g pie

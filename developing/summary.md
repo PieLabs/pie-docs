@@ -1,12 +1,17 @@
 # Summary
 
-Each PIE is an individual question-type or interaction that is designed to be re-used. An example of a PIE might be a multi-choice question-type or a question-type that allows a student to make a bar chart or plot points on a graph. A PIE does not to be a question type, it can be any interaction or utility, like a Calculator or a graphing tool.
+Each PIE is an individual UI Element or interaction that is designed to be re-used in the context of assessment. An example of a PIE might be a multi-choice question-type or a question-type that allows a student to make a bar chart or plot points on a graph. However a PIE does not to be a question type, it can be any Custom Element. 
+
+Users can configure one or more instances of PIEs to create questions/assessment experiences for students. See [Rendering Items](/using/rendering-items.md)
 
 To create a PIE a developer implements:
 
-1. A [Custom Element](https://www.w3.org/TR/custom-elements/) that provides the user interface for the PIE
-2. A Controller that provides the model for the UI and processes user responses to generate results/outcomes and learning activity (Optional)
-3. An NPM package that allows users/systems to install and use your PIE
+1. [Required] A [Custom Element](https://www.w3.org/TR/custom-elements/) that provides the user interface for the PIE
+2. [Required]* An NPM package that allows users/systems to install and use your PIE
+3. [Optional] A Controller that manipulates the model for the UI and/or processes user input to generate results/outcomes and learning activity 
+
+
+> A PIE that implements a controller will referred to as an Interaction in these documents.
 
 
 #### Example
@@ -38,7 +43,7 @@ export default class MyPie extends HTMLElement {
 
 **Controller**
 
-A Controller is implemented by the PIE, this provides a model for the PIE Element to use in the UI and provides logic for analyzing a response and providing an outcome.
+A Controller can be implemented by the PIE, this provides a model for the PIE Element to use in the UI and provides logic for analyzing a response and providing an outcome.
 
 ```javascript
 export function model(config, session, env) {
@@ -63,3 +68,6 @@ Each PIE is provided as a standard NPM package, using semver versioning.
   ...
 }
 ``` 
+
+
+_* A Custom Element can in fact be defined as a local JS file relative to an Item configuration. This may be useful for testing during developemtn, however for effective re-use elements should be defined in an NMP package_
