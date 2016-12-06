@@ -1,6 +1,6 @@
-# Rendering Questions
+# Rendering Items
 
-The PIE [Packaging Tool](packaging-questions.md) is used to assemble and package the Javascript and HTML into files needed to render an Assessment Item in the browser.
+The PIE [Packaging Tool](packaging-items.md) is used to assemble and package the Javascript and HTML into files needed to render an Assessment Item in the browser.
 
 An Assessment Item packed by the Packaging Tool may have some or all of the following files:
 
@@ -40,7 +40,7 @@ For complete documentation on interacting with the `pie-player` element, see the
 
 ## Advanced & Server-Side Usage
 
-If you want finer control over how to use the PIE-formatted assessment item, or want to use it in a secure-testing environment where data, including correct-responses, are not sent to the client you can use the other files in a packaged item: `pie-view.js` and `pie-controller.js`
+For finer control over how to use the PIE-formatted assessment item, or to use it in a secure-testing environment where data, including correct-responses, are not sent to the client you can use the other files in a packaged item: `pie-view.js` and `pie-controller.js`
 
 ### Client Side Example
 
@@ -115,7 +115,7 @@ The example below renders a single `pie-player` with a remote controller.
   }
   /** listen for the `pie.player-ready` event */  
   document.addEventListener('pie.player-ready', function(event){
-    loadJson('config.json').then(config => {
+
       var player = event.target;
       player.env = env;
       player.session = session;
@@ -123,13 +123,12 @@ The example below renders a single `pie-player` with a remote controller.
        * instantiate a PieController and assign it to the `pie-player`. 
        */
       player.controller = new PieRemoteController(endpoints);
-    }).catch(e => throw e);
   });
 </script>
 ```
 
 
-Below is a possible server implementation running as a commonjs node module:
+Below is an example of a possible server implementation running as a commonjs node module:
 
 ```javascript
 const http = require('http');

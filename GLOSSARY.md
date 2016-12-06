@@ -8,3 +8,6 @@ An Assessment Item is one or several content, ui, question & interaction element
 ## PIE Player
 The PIE Player is a context that is provided in which PIEs can run. It sets data properties and handles events emitted by PIEs.
 
+## NPM
+Node Package Manager is a format and toolkit for describing javascript packages.
+

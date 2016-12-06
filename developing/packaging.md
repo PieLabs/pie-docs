@@ -12,10 +12,10 @@ The following directory structure and files should be present in the package (an
 |----------------------------|----------------------------------------------------------------------------------------------------------------------|-------------|
 | `README.md` | Documentation to describe the PIE to users  | yes |
 | `package.json` | Definition for the PIE as an NPM package. Including dependencies needed for rendering | yes |
-| `controller/controller.js` | CommonJS or ES6 module for the PIE controller logic | yes |
-| `controller/package.json` | Used to define dependencies needed by the controller. Dependencies should be kept to a minimum and should not use IO | no |
+| `controller/` | Folder containing controller code | no |
+| `controller/package.json` | Used to define dependencies and `main` file for the controller. Dependencies should be kept to a minimum and should not use IO | no |
 | `docs/schema.json` | JSON schema document that defines the configuration model for the PIE | recommended |
-| `docs/demo` | Directory that defined a demonstration assessment item using this PIE | recommended |
+| `docs/demo` | Directory that defines a demonstration assessment item that uses this PIE | recommended |
 | `docs/demo/index.html` | The HTML markup for the demo assessment item | recommended |
 | `docs/demo/config.json` | The JSON config for the demo assessment item | recommended |
 | `src/` | Directory for the PIE Element source code*  | recommended |
@@ -38,8 +38,7 @@ Example Package.json:
   "version": "0.0.1",
   "main": "src/index.js",
   "dependencies": {...},
-  "files": ["docs", "dist", "controller.js"],
-  "_pie_controller": "dist/controller.js" // alternative - see notes below
+  "files": ["docs", "src", "controller"],
 }
 ``` 
 
@@ -72,10 +71,6 @@ Defines what files should be downloaded when the package is installed.
 
 > `README.md`, and `package.json` and some [other files](https://docs.npmjs.com/files/package.json#files) will always be included by npm 
 
-### _pie_controller
-
-If defined, this property declares the path to the `controller` directory for the PIE. 
-If it is not present, it is assumed that `controller` is at the root of the package directory.
 
 
 ## Demo and Docs

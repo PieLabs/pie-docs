@@ -1,8 +1,8 @@
-# PIE: Portable Interaction Elements
+# PIE: Portable Interactions and Elements
 
 > NOTE: the PIE Framework is currently in pre-release, until release these documents are subject to change.
 
-Portable Interaction Elements \(PIE\) is an Open Source framework for building re-usable interactions and questions that can capture a user's response, analyze a user's response, and report an outcome and learning activity from the user interaction.
+Portable Interactions and Elements \(PIE\) is an Open Source framework for building , distributing and rendering re-usable UI elements, and interactions that can capture a user's response, analyze a user's response, and report an outcome and learning activity from the user interaction.
 
 It supports the development of highly interactive questions and assessment interactions that can be shared and distributed to run on any web-based platform, fully preserving their design and functionality.
 
@@ -19,7 +19,7 @@ Currently, it is quite difficult to author assessments that:
 
 The PIE framework addresses this by providing:
 
-- A framework and tools for developing re-usable assessment interactions and UI elements (Portable Interaction Elements - PIEs)
+- A framework and tools for developing re-usable assessment interactions and UI elements 
 - An Open Source Player, for rendering assessments that use PIEs
 - An Open Source format and tools, for sharing assessments in a 'binary' format that preserves the exact behaviour and design of the Assessment Item.
 - A suite of Open Source PIEs including a variety of question types and tools 
