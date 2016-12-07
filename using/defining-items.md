@@ -78,7 +78,7 @@ The properties for PIE Elements differ for each Element or Interaction type, so 
 
 Unique id (within the definition) for the defined PIE.
 
-> this correlates with the `data-id` property in the [html](#html) markup.
+> this correlates with the `pie-id` property in the [html](#html) markup.
 
 ##### `element` (required)
 
@@ -169,17 +169,17 @@ A calculated score for the assessment item will take these weights into account.
 
 The HTML file defines the placement of the PIEs within HTML markup.
 
-The `data-id` attribute in the html references the `id` of the PIE defined in the JSON.
+The `pie-id` attribute in the html references the `id` of the PIE defined in the JSON.
 
 Example:
 
 `index.html`
 ```html
 Here is question one:
-<my-multi-choice-pie data-id="1"></my-multi-choice-pie>
+<my-multi-choice-pie pie-id="1"></my-multi-choice-pie>
 <p/>
 Here is question two:
-<my-other-pie data-id="2"></my-other-pie>
+<my-other-pie pie-id="2"></my-other-pie>
 ```
 
 ## Advanced 
