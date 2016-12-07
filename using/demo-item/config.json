@@ -1,7 +1,7 @@
 {
   "elements": {
-    "corespring-choice": "1.2.0",
-    "corespring-placement-ordering": "1.4.0"
+    "corespring-choice": "1.4.0",
+    "corespring-placement-ordering": "1.5.0"
   },
   "models": [
     {
