@@ -102,10 +102,12 @@ Both of these assessment items use `my-pie@1.0.0`, so the `pie-view.js` + `pie-c
 
 The PIE cli tool provides a command to help with reusing generated code:
 
-`pie manifest-id [item directory, defaults to current directory]`
+`pie manifest [item directory, defaults to current directory] --outfile myManifest.txt`
 
-Returns a unique ID that represents the PIEs (and their versions) that are included in the config.
+Writes a JSON file which includes a unique hash ID that represents the PIEs (and their versions) that are included in the config.
 Using this ID you can store generated code by ID and reference to see if it has already been created before packing a new item.
+
+
 
 
 
