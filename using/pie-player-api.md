@@ -1,5 +1,6 @@
 # pie-player 
 
+> Pre-release note: Some of these APIs are not finalized and not fully implemented. Will be finalized for release.
 
 ## Html
 

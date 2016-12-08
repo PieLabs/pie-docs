@@ -5,17 +5,18 @@
  - [Defining Items](using/defining-items.md)
  - [Packaging Items](using/packaging-items.md)
  - [Rendering Items](using/rendering-items.md)
- - APIs
-   - [PIE Player](using/api/pie-player.md)
-   - [PIE Controller](using/api/pie-controller.md)
+ - [PIE Player API](using/pie-player-api.md)
    
 - PIE Development
  - [Summary](developing/summary.md)
+ - [Development](developing/development.md)
  - [Custom Element](developing/custom-element.md)
  - [Controller](developing/controller.md)
- - [Packaging](developing/packaging.md)
+ - [Packaging PIEs](developing/packaging.md)
  - [Environment](developing/environment.md)
- - [Using Modules](developing/using-modules.md)
+
+- [Open Source PIEs](open-source-pies.md)
+
 
 
 
