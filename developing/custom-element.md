@@ -15,6 +15,7 @@ export default class MyPie extends HTMLElement {
     super();
     this._model = null;
     this._session = null;
+    this._env = null;
   }
 
   set model(m) {
@@ -27,6 +28,10 @@ export default class MyPie extends HTMLElement {
 
   set session(s) {
     this._session = s;
+  }
+
+  set env(e) {
+    this._env = e;
   }
 
   connectedCallback() {
@@ -60,6 +65,12 @@ The session model represents the state of a user's interaction with the PIE. Thi
 
 As with `model` the structure of this data is entirely up to the developer of the PIE that uses it.
 
+#### `env`
+
+The `env` property contains data that reflect the current user context. Any updates do these properties will be passed to the Custom Element by setting this property.
+
+For a complete description of the properties in `env` see: [Environment](environment.md)
+
 ### Custom Element Properties
 
 If you do not provide a controller and only provide a Custom Element, your element may receive configuration data to its properties in two ways:
@@ -87,22 +98,6 @@ class MyPie extends HTMLElement {
 }
 ```
 
-#### Element Attributes
-
-Values set within attributes on your Custom Element in html markup will be passed to the equivalent property name in your Custom Element class:
-
-```html
-  <my-pie pie-id="1" foo-bar="some data"></my-pie>
-```
-
-
-```javascript
-class MyPie extends HTMLElement {
-  set fooBar(value) {
-    // == 'some data'
-  }
-}
-```
 
 
 ### Events

@@ -1,7 +1,7 @@
 # Environment
 
-The environment `env` Object helps to define the current context for a PIE as it is being viewed by a user.
-Any time this property is updated the [PIE Player](../pie-player.md) passes it to the [controller](controller.md) `model` function implemented by a PIE and the resulting model is then set as a property in the PIE Custom Element. This allows a developer to update or filter the model as neccesary to have the appropriate data available to render the view in the current context.
+The environment `env` Object helps to define the current runtime context for PIEs as they are being viewed by a user.
+Any time this property is updated the [PIE Player](../pie-player.md) will set it on the Custom Element for a PIE. It also will be passed to to the `model` function implemented by a PIE [controller](controller.md). The result of this will be set as the `model` property in the PIE Custom Element. This allows a developer to update or filter the model as neccesary to have the appropriate data available to render the view in the current context.
 
 
 ## Environment Properties
