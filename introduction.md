@@ -65,4 +65,8 @@ The PIE Framework is based on several years of work by CoreSpring.org in the fie
 
 We developed this technology to help fulfill our philanthropic mission of making high-quality, inexpensive & free assessment content available to educators.
 
-We believe this challenge of creating and sharing assessment items with advanced interactions with high-fidelity is shared across the education industry. We decided to make our solution to this problem available as an Open Source project in the hope that it will ultimately help educators have better access to high-quality and more interactive assessment interactions.
+We believe this challenge of creating and sharing assessment items with advanced interactions with high-fidelity is shared across the education industry. 
+
+We agree with the problem description and approach suggested by Smarter Balanced in the [ARI](http://www.smarterapp.org/ARI/) proposal and found that our existing technology was very compatible with delivering on this vision.
+
+We decided to make a new version of our solution to this problem available as an Open Source project in the hope that it will ultimately help educators have better access to high-quality and more interactive assessment interactions.
