@@ -1,6 +1,6 @@
 # publishes to github pages branch
 rm -rf _book
-gitbook build
+./node_modules/.bin/gitbook build
 cd _book
 git init
 git add -A
