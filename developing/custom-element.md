@@ -112,7 +112,7 @@ A PIE should emit the following events:
 A PIE should emit this event when the Custom Element is connected in the DOM. This event is handled by the PIE Player which will then set the `model` and `session` properties on the element.
 
 
-###  `pie,responseComplete` (optional)
+###  `pie.responseComplete` (optional)
 
 This event should be emitted if the data captured from a user (stored in `session` property) is sufficient to consider the response complete.
 
