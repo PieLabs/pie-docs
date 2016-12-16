@@ -61,7 +61,9 @@ This allows you to set the model to an appropriate state based on the current se
 
 #### `session`
 
-The session model represents the state of a user's interaction with the PIE. This will be set by the PIE player when loading an assessment item. 
+The session property represents the state of a user's interaction with the PIE. If a setter is provided in the Custom Element this property will be set by the PIE player when loading an assessment item. 
+
+The Element can modify this object and should emit a `sessionChanged` event (see below) when it does so, so that if need be the session response may be persisted.
 
 As with `model` the structure of this data is entirely up to the developer of the PIE that uses it.
 
@@ -110,23 +112,34 @@ A PIE should emit the following events:
 A PIE should emit this event when the Custom Element is connected in the DOM. This event is handled by the PIE Player which will then set the `model` and `session` properties on the element.
 
 
-###  `pie` Event, `type: 'sessionChanged'` (optional)
+###  `pie,responseComplete` (optional)
 
-When a PIE Custom Element is inialized the `pie-player` will set the `session` property (described above).
+This event should be emitted if the data captured from a user (stored in `session` property) is sufficient to consider the response complete.
 
-If the PIE modifies the state of a users interaction with the PIE (for example a user's choice of an option in a choice-question) it should emit a `pie` event with the detail type `sessionChanged`. The PIE Player may use this to persist session data.
+For example, if you had a had a multi choice question that required the student to pick at least 3 choices you would emit this event when when 3 choices had been selected.
+
 
 ```javascript
-    var event = new CustomEvent('pie', {
-      bubbles: true,
-      detail: {
-        type: 'sessionChanged', // this type indicates that the session state has been modified in the client
-        component: this.tagName.toLowerCase() // the element name of the PIE is emitting the event.
-      }
+    var event = new CustomEvent('pie.responseComplete', {
+      bubbles: true
     });
 
     this.dispatchEvent(event);
 ```
+
+###  `pie.responseChanged`  (optional)
+
+This event should be emitted when the user respose has been modified, but not necessarily completed. 
+Typically, the system hosting the Item using your PIE would be expected to persist the modified session upon receving this event.
+
+```javascript
+    var event = new CustomEvent('pie.responseChanged', {
+      bubbles: true
+    });
+
+    this.dispatchEvent(event);
+```
+
 
 
 
