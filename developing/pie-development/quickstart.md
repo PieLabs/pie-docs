@@ -199,3 +199,126 @@ Paste the following into the `controller/src/index.js` file:
     }
 
 Now refresh `http://localhost:4000`, click the "demo" tab, and you will see that the message has now been replaced with "hello, PIE".
+
+### Add some interactive elements
+
+At this point, it'll be useful to add some styling and interaction to our custom PIE. Start with adding the `less` module to NPM:
+
+    npm install less --save
+
+Then add the following to `src/index.less` so that we have some styling for our toggle:
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+
+      input {
+        display:none;
+
+        &:checked + .slider {
+          background-color: #2196F3;
+
+          &:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+          }
+        }
+
+        &:focus + .slider {
+          box-shadow: 0 0 1px #2196F3;
+        }
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+
+        &:before {
+          position: absolute;
+          content: "";
+          height: 26px;
+          width: 26px;
+          left: 4px;
+          bottom: 4px;
+          background-color: white;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+
+        &.round {
+          border-radius: 34px;
+
+          &:before {
+            border-radius: 50%;
+          }
+        }
+      }
+
+    }
+
+
+After this we'll import the `index.less` in our `index.js` file, and add some markup to the `_rerender` function that displays the switch:
+
+    require('./index.less');
+
+    export default class Toggle extends HTMLElement {
+      
+      constructor() {
+        super();
+        this._model = null;
+        this._session = null;
+        this._rerender();
+      }
+
+      set model(m) {
+        this._model = m;
+        this._rerender();
+      }
+
+      set session(s) {
+        this._session = s;
+        if (!this._session.answer) {
+          this._session.answer = false;
+        }
+        this._rerender();
+      }
+
+      get session() {
+        return this._session;
+      }
+
+      _rerender() {
+        let checked = this._session ? this._session.answer : false;
+
+        this.innerHTML = [
+          '<label class="switch">',
+            '<input type="checkbox" ', (checked ? 'checked=""' : ''), '>',
+            '<div class="slider round"></div>',
+          '</label>'
+        ].join('\n');
+
+        this.getElementsByTagName('input')[0].addEventListener('change', (e) => {
+          this._session.answer = e.target.checked;
+        });
+      }
+
+      connectedCallback() {
+        this.dispatchEvent(new CustomEvent('pie.register', { bubbles: true }));
+        this._rerender();
+      }
+
+    }
+
+Note also that the `addEventListener` for changes on the `input` element will update the PIE's `_session` to reflect the user's changes. Refresh `http://localhost:4000`, click the "demo" tab, and you should now see a toggle component: 
+
+![Toggle](images/toggle.png)
