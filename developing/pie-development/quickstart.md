@@ -23,3 +23,28 @@ Using the interactive `npm` command, set the name of the interaction to `pie-tog
 It would also be useful to set up a README at this point:
 
     touch README.md
+
+### Creating a Web Component
+
+To get started, we'll need to create a definition for our PIE web component in a `src` directory:
+
+    mkdir src
+    cd src
+    touch index.js
+
+Fill out this file with the following code:
+
+    export default class Toggle extends HTMLElement {
+      
+      constructor() {
+        super();
+        this.innerHTML = [
+          '<div>',
+            "hello, world",
+          '</div>'
+        ].join('\n');
+      }
+
+    }
+
+This defines a simple web component with the content 'hello, world'.
