@@ -99,3 +99,13 @@ Once the PIE is configured in the JSON, we'll need to define the markup for rend
     </div>
 
 Once this is done, we have the base setup for our custom PIE.
+
+### Running the demo
+
+In order to display our configured PIE in a browser, run the `info` task:
+
+    pie info
+
+Then navigate your browser to `http://localhost:4000` and click the "demo" link. You should see the "hello, world" message we entered earlier:
+
+![Demo](images/demo.png)
