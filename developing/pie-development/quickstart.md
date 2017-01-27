@@ -109,3 +109,93 @@ In order to display our configured PIE in a browser, run the `info` task:
 Then navigate your browser to `http://localhost:4000` and click the "demo" link. You should see the "hello, world" message we entered earlier:
 
 ![Demo](images/demo.png)
+
+### Adding data to the model
+
+First off, we will introduce logic so that our custom PIE manages state and provides access to its `model` and `session` properties:
+
+    export default class Toggle extends HTMLElement {
+      
+      constructor() {
+        super();
+        this._model = null;
+        this._session = null;
+        this._rerender();
+      }
+
+      set model(m) {
+        this._model = m;
+        this._rerender();
+      }
+
+      set session(s) {
+        this._session = s;
+        this._rerender();
+      }
+
+      get session() {
+        return this._session;
+      }
+
+      _message() {
+        return this._model ? this._model.message : 'hello, world';
+      }
+
+      _rerender() {
+        this.innerHTML = [
+          '<div>',
+            this._message(),
+          '</div>'
+        ].join('\n');
+      }
+
+      connectedCallback() {
+        this.dispatchEvent(new CustomEvent('pie.register', { bubbles: true }));
+        this._rerender();
+      }
+
+    }
+
+There's also a bit of glue code in here so that our component registers itself with the rest of the PIE framework. As you can see, if there is a `message` property defined in the model it will be rendered into the markup. We'll also need to change the `docs/demo/config.json` file to include a custom message:
+
+    {
+      "elements": {
+        "pie-toggle": "../.."
+      },
+      "models": [
+        {
+          "id": "1",
+          "element": "pie-toggle",
+          "message": "hello, PIE"
+        }
+      ]
+    }
+
+At this point we will also need a controller for our PIE. Create a `controller` directory in the project root and initialize it using `npm` with the name `pie-toggle-controller` and the entry point `src/index.js`:
+
+    mkdir controller
+    cd controller 
+    npm init
+    mkdir src
+    cd src
+    touch index.js
+
+Paste the following into the `controller/src/index.js` file:
+
+    export function outcome(question, session) {
+
+      return new Promise((resolve) => {
+        resolve({});
+      });
+
+    }
+
+    export function model(question, session, env) {
+
+      return new Promise((resolve) => {
+        resolve(question);
+      });
+
+    }
+
+Now refresh `http://localhost:4000`, click the "demo" tab, and you will see that the message has now been replaced with "hello, PIE".
