@@ -48,3 +48,54 @@ Fill out this file with the following code:
     }
 
 This defines a simple web component with the content 'hello, world'.
+
+### Setting up demo code
+
+Now that we've got some markup in our custom PIE, we'll need to define an interaction so that we can see it in action. For a custom PIE, this is performed by adding data and markup to the demo. You'll want to create a `docs/demo` directory, and add to it a `config.json` file as well as an `index.html` file:
+
+    mkdir -p docs/demo
+    cd docs/demo
+    touch index.html
+    touch config.json
+
+At this point, your project structure should look like this:
+
+    .
+    ├── docs
+    │   └── demo
+    │       ├── config.json
+    │       └── index.html
+    ├── package.json
+    └── src
+        └── index.js
+
+In the `config.json` file, we'll need to define the configuration data to set up the PIE:
+
+    {
+      "elements": {
+        "pie-toggle": "../.."
+      },
+      "models": [
+        {
+          "id": "1",
+          "element": "pie-toggle"
+        }
+      ]
+    }
+
+The `elements` field tells `pie` where to find the source for a given element using its name. The `models` property defines the content of the various PIE instances to be rendered. At the moment, we're just setting a PIE referenced by `id=1` to be defined as a `pie-toggle`.
+
+Once the PIE is configured in the JSON, we'll need to define the markup for rendering it in the `index.html` file:
+
+    <style type="text/css">
+      .body {
+        width: 900px;
+        margin: 0 auto;
+      }
+    </style>
+
+    <div class="body">
+      <pie-toggle pie-id="1"></pie-toggle>
+    </div>
+
+Once this is done, we have the base setup for our custom PIE.
