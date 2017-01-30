@@ -358,3 +358,76 @@ Since this controller logic expects an `answer` field in the question to specify
 The `pie-controller` will use the `score` information to set the score in the demo. Refresh `http://localhost:4000`, click the "demo" tab, click the toggle, change the view mode to 'evaluate', and you will see the score presented in the UI:
 
 ![Score](images/score.png)
+
+### Provide feedback from the controller
+
+We can also use the `model` function of the controller to provide additional data related to the state of the session as it relates to the question.
+
+Replace the `model` function in `controller/src/index.js` with the following:
+
+    export function model(question, session, env) {
+
+      return new Promise((resolve) => {
+        var response = {};
+        if (env.mode === 'evaluate') {
+          let correct = session && session.answer && session.answer === question.answer;
+          response.result = correct;
+          response.feedback = correct ? question.feedback.correct : question.feedback.incorrect;
+        }
+        resolve(response);
+      });
+
+    }
+
+As you can see, the model function now looks to see if the view mode is set to `evalate`, examines the session data to see if the question has been answered correctly, and provides feedback accordingly. In order to provide custom feedback from the question data, we add the corresponding `feedback` field to the model defined in `docs/demo/config.json`:
+
+    {
+      "elements": {
+        "pie-toggle": "../.."
+      },
+      "models": [
+        {
+          "id": "1",
+          "element": "pie-toggle",
+          "answer": true,
+          "feedback": {
+            "correct": "Correct!",
+            "incorrect": "Incorrect!"
+          }
+        }
+      ]
+    }
+
+Now that the model contains a `feedback` field, we will need to update the `src/index.js` that renders the PIE in the UI to display this field to the user. Modify the `_rerender` function to look like this:
+
+    _rerender() {
+      let feedback = (function(model) {
+        if (model && model.feedback) {
+          return [
+            "<div class='feedback'>",
+              model.feedback,
+            "</div>"
+          ].join('\n');
+        } else {
+          return "";
+        }
+      }(this._model));
+
+      let checked = this._session ? this._session.answer : false;
+
+      this.innerHTML = [
+        '<label class="switch">',
+          '<input type="checkbox" ', (checked ? 'checked=""' : ''), '>',
+          '<div class="slider round"></div>',
+        '</label>',
+        feedback
+      ].join('\n');
+
+      this.getElementsByTagName('input')[0].addEventListener('change', (e) => {
+        this._session.answer = e.target.checked;
+      });
+    }
+
+Refresh `http://localhost:4000`, click the "demo" tab, click the toggle, change the view mode to 'evaluate', and you will see the feedback presented in the UI:
+
+![Feedback](images/feedback.png)
