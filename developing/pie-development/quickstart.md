@@ -322,3 +322,39 @@ After this we'll import the `index.less` in our `index.js` file, and add some ma
 Note also that the `addEventListener` for changes on the `input` element will update the PIE's `_session` to reflect the user's changes. Refresh `http://localhost:4000`, click the "demo" tab, and you should now see a toggle component: 
 
 ![Toggle](images/toggle.png)
+
+### Provide scoring from the controller
+
+Replace the `outcome` function in `controller/src/index.js` with the following:
+
+  export function outcome(question, session) {
+
+    return new Promise((resolve) => {
+      var correct = (session.answer === question.answer);
+      resolve({
+        score: {
+          scaled: correct ? 1 : 0
+        }
+      });
+    });
+
+  }
+
+Since this controller logic expects an `answer` field in the question to specify the correct response, we must also add this information to the model in `docs/demo/config.json`:
+
+    {
+      "elements": {
+        "pie-toggle": "../.."
+      },
+      "models": [
+        {
+          "id": "1",
+          "element": "pie-toggle",
+          "answer": true
+        }
+      ]
+    }
+
+The `pie-controller` will use the `score` information to set the score in the demo. Refresh `http://localhost:4000`, click the "demo" tab, click the toggle, change the view mode to 'evaluate', and you will see the score presented in the UI:
+
+![Score](images/score.png)
