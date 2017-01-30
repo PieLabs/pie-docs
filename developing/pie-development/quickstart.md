@@ -434,6 +434,3 @@ Refresh `http://localhost:4000`, click the "demo" tab, click the toggle, change 
 
 ![Feedback](images/feedback.png)
 
-### Adding support for internationalization
-
-Now that we've got some text feedback, we can add support for internationalization.
