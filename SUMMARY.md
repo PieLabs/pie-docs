@@ -14,6 +14,7 @@
  - [Controller](developing/controller.md)
  - [Packaging PIEs](developing/packaging.md)
  - [Environment](developing/environment.md)
+ - [Devlopment Tutorial](developing/tutorial/development-tutorial.md)
 
 - [Open Source PIEs](open-source-pies.md)
 
