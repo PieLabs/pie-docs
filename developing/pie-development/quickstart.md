@@ -1,6 +1,6 @@
 ## Setting up your first PIE
 
-To start creating a custom PIE, the first step is to create a directory and initialize the project. For the purposes of this explanation, we'll be developing a simple toggle with a value of either `true` or `false`.
+To start creating a PIE, the first step is to create a directory and initialize the project. For the purposes of this explanation, we'll be developing a simple toggle with a value of either `true` or `false`.
 
     mkdir pie-toggle
     cd pie-toggle
@@ -24,9 +24,9 @@ It would also be useful to set up a README at this point:
 
     touch README.md
 
-### Creating a Web Component
+### Creating a Custom Element
 
-To get started, we'll need to create a definition for our PIE web component in a `src` directory:
+To get started, we'll need to create a definition for our PIE [custom element](https://developers.google.com/web/fundamentals/getting-started/primers/customelements) in a `src` directory:
 
     mkdir src
     cd src
@@ -51,7 +51,7 @@ This defines a simple web component with the content 'hello, world'.
 
 ### Setting up demo code
 
-Now that we've got some markup in our custom PIE, we'll need to define an interaction so that we can see it in action. For a custom PIE, this is performed by adding data and markup to the demo. You'll want to create a `docs/demo` directory, and add to it a `config.json` file as well as an `index.html` file:
+Now that we've got some markup in our PIE, we'll need to define an item so that we can see it in action. For a  PIE, this is performed by adding data and markup to the demo. You'll want to create a `docs/demo` directory, and add to it a `config.json` file as well as an `index.html` file:
 
     mkdir -p docs/demo
     cd docs/demo
@@ -83,7 +83,7 @@ In the `config.json` file, we'll need to define the configuration data to set up
       ]
     }
 
-The `elements` field tells `pie` where to find the source for a given element using its name. The `models` property defines the content of the various PIE instances to be rendered. At the moment, we're just setting a PIE referenced by `id=1` to be defined as a `pie-toggle`.
+The `elements` field tells `pie` where to find the source for a given element using its name. Note that you may also use NPM-style locations for this property as well. The `models` property defines the content of the various PIE instances to be rendered. At the moment, we're just setting a PIE referenced by `id=1` to be defined as a `pie-toggle`.
 
 Once the PIE is configured in the JSON, we'll need to define the markup for rendering it in the `index.html` file:
 
@@ -98,11 +98,11 @@ Once the PIE is configured in the JSON, we'll need to define the markup for rend
       <pie-toggle pie-id="1"></pie-toggle>
     </div>
 
-Once this is done, we have the base setup for our custom PIE.
+Once this is done, we have the base setup for our PIE.
 
 ### Running the demo
 
-In order to display our configured PIE in a browser, run the `info` task:
+In order to display our configured PIE in a browser, run the `info` task from the root of the project:
 
     pie info
 
@@ -110,9 +110,11 @@ Then navigate your browser to `http://localhost:4000` and click the "demo" link.
 
 ![Demo](images/demo.png)
 
+Towards the top of the screen you will see controls for changing the view mode, language settings, and color contrast for the item.
+
 ### Adding data to the model
 
-First off, we will introduce logic so that our custom PIE manages state and provides access to its `model` and `session` properties:
+First off, we will introduce logic so that our PIE manages state and provides access to its `model` and `session` properties:
 
     export default class Toggle extends HTMLElement {
       
@@ -202,7 +204,7 @@ Now refresh `http://localhost:4000`, click the "demo" tab, and you will see that
 
 ### Add some interactive elements
 
-At this point, it'll be useful to add some styling and interaction to our custom PIE. Start with adding the `less` module to NPM:
+At this point, it'll be useful to add some styling and interaction to our PIE. Start with adding the `less` module to NPM from the root directory of the project:
 
     npm install less --save
 
@@ -431,3 +433,7 @@ Now that the model contains a `feedback` field, we will need to update the `src/
 Refresh `http://localhost:4000`, click the "demo" tab, click the toggle, change the view mode to 'evaluate', and you will see the feedback presented in the UI:
 
 ![Feedback](images/feedback.png)
+
+### Adding support for internationalization
+
+Now that we've got some text feedback, we can add support for internationalization.
