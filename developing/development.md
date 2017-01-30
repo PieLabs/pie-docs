@@ -13,7 +13,11 @@ To create a new PIE:
 5. Load your item with `pie serve` edit your source code, and PIE CLI's *live reload* will automatically reload your changes
 
 
+See the [Development Totorial](tutorial/development-tutorial.md) for a more complete walkthrough on creating a PIE.
+
 > See the [PIE Elements](https://github.com/pieelements) organization on github for example PIEs.
+
+
 
 ## Using Modules
 
