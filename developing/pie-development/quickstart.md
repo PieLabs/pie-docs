@@ -24,6 +24,8 @@ It would also be useful to set up a README at this point:
 
     touch README.md
 
+[See the code here](https://github.com/PieLabs/pie-toggle/commit/191fc3a4f29e282258b6df5582dfd40657c94822)
+
 ### Creating a Custom Element
 
 To get started, we'll need to create a definition for our PIE [custom element](https://developers.google.com/web/fundamentals/getting-started/primers/customelements) in a `src` directory:
@@ -48,6 +50,8 @@ Fill out this file with the following code:
     }
 
 This defines a simple web component with the content 'hello, world'.
+
+[See the code here](https://github.com/PieLabs/pie-toggle/commit/6bca8238da6f60e0303b990c104cced869513ca7)
 
 ### Setting up demo code
 
@@ -99,6 +103,8 @@ Once the PIE is configured in the JSON, we'll need to define the markup for rend
     </div>
 
 Once this is done, we have the base setup for our PIE.
+
+[See the code here](https://github.com/PieLabs/pie-toggle/commit/d26f76aecd752fe926912a680f904c8259990481)
 
 ### Running the demo
 
@@ -201,6 +207,8 @@ Paste the following into the `controller/src/index.js` file:
     }
 
 Now refresh `http://localhost:4000`, click the "demo" tab, and you will see that the message has now been replaced with "hello, PIE".
+
+[See the code here](https://github.com/PieLabs/pie-toggle/commit/b7a20539d4a5168a0b2fdfb70841ffa1f2ad8b86)
 
 ### Add some interactive elements
 
@@ -325,6 +333,8 @@ Note also that the `addEventListener` for changes on the `input` element will up
 
 ![Toggle](images/toggle.png)
 
+[See the code here](https://github.com/PieLabs/pie-toggle/commit/79ead40fb3e4dd25c9bd816a3f20cf98c41bc8a6)
+
 ### Provide scoring from the controller
 
 Replace the `outcome` function in `controller/src/index.js` with the following:
@@ -360,6 +370,8 @@ Since this controller logic expects an `answer` field in the question to specify
 The `pie-controller` will use the `score` information to set the score in the demo. Refresh `http://localhost:4000`, click the "demo" tab, click the toggle, change the view mode to 'evaluate', and you will see the score presented in the UI:
 
 ![Score](images/score.png)
+
+[See the code here](https://github.com/PieLabs/pie-toggle/commit/0272f64187152f8ecf7c8ccfa2a2c26317593622)
 
 ### Provide feedback from the controller
 
@@ -434,3 +446,4 @@ Refresh `http://localhost:4000`, click the "demo" tab, click the toggle, change 
 
 ![Feedback](images/feedback.png)
 
+[See the code here](https://github.com/PieLabs/pie-toggle/commit/448310d838722f44297f7d439dcd469963e4105e)
