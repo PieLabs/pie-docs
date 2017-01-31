@@ -17,6 +17,8 @@
  - [Devlopment Tutorial](developing/tutorial/development-tutorial.md)
 
 - [Open Source PIEs](open-source-pies.md)
+- [Design Decisions](design-decisions.md)
+
 
 
 
