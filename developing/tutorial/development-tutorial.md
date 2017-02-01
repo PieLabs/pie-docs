@@ -452,3 +452,10 @@ On the page `http://localhost:4000`, click the toggle, change the view mode to '
 ![Feedback](images/feedback.png)
 
 [See the code here](https://github.com/PieLabs/pie-toggle/commit/448310d838722f44297f7d439dcd469963e4105e)
+
+
+### Debugging 
+
+When running `pie serve` The Element and Controller code for your PIE is transpiled and added to a file called `pie-item.js`. You can inspect this file with your browser debugger.
+
+> Coming Soon: The `pie-item.js` file is transpiled to ES5 from your sources. Source maps feature will be added to `pie serve` task, so your ES6 files can be inspected directly in a compatible debugger. 
