@@ -108,15 +108,18 @@ Once this is done, we have the base setup for our PIE.
 
 ### Running the demo
 
-In order to display our configured PIE in a browser, run the `info` task from the root of the project:
+In order to display our configured PIE in a browser, run the `serve` task from the `docs/demo` directory of the project:
 
-    pie info
+    pie serve
 
-Then navigate your browser to `http://localhost:4000` and click the "demo" link. You should see the "hello, world" message we entered earlier:
+Then navigate your browser to `http://localhost:4000`. You should see the "hello, world" message we entered earlier:
 
 ![Demo](images/demo.png)
 
-Towards the top of the screen you will see controls for changing the view mode, language settings, and color contrast for the item.
+
+Towards the top of the screen you will see a control panel for changing the view mode, language settings, and color contrast for the item. (This is a subset of the properties that can be set for the environment - a complete set will be coming in an upcoming version of the control panel.)
+
+The `pie serve` task enables **Hot Module Replacement** for your code. This means any changes you make in your Javascript code will be automatically updated in the page, you do not need to refresh the page or re-run the task. To try this out, open the `src/index.js` file and change the `hello world` message to something else - you will see this is immediately updated on the page.
 
 ### Adding data to the model
 
@@ -181,6 +184,8 @@ There's also a bit of glue code in here so that our component registers itself w
 
 At this point we will also need a controller for our PIE. Create a `controller` directory in the project root and initialize it using `npm` with the name `pie-toggle-controller` and the entry point `src/index.js`:
 
+> Note: the requirement to define an NPM package for the controller is being removed. This will be an optional feature. See Pielabs/pie-cli#85.
+
     mkdir controller
     cd controller 
     npm init
@@ -206,7 +211,7 @@ Paste the following into the `controller/src/index.js` file:
 
     }
 
-Now refresh `http://localhost:4000`, click the "demo" tab, and you will see that the message has now been replaced with "hello, PIE".
+Now open `http://localhost:4000`, and you will see that the message has now been replaced with "hello, PIE".
 
 [See the code here](https://github.com/PieLabs/pie-toggle/commit/b7a20539d4a5168a0b2fdfb70841ffa1f2ad8b86)
 
@@ -329,7 +334,7 @@ After this we'll import the `index.less` in our `index.js` file, and add some ma
 
     }
 
-Note also that the `addEventListener` for changes on the `input` element will update the PIE's `_session` to reflect the user's changes. Refresh `http://localhost:4000`, click the "demo" tab, and you should now see a toggle component: 
+Note also that the `addEventListener` for changes on the `input` element will update the PIE's `_session` to reflect the user's changes. Open `http://localhost:4000`, and you should now see a toggle component: 
 
 ![Toggle](images/toggle.png)
 
@@ -367,7 +372,7 @@ Since this controller logic expects an `answer` field in the question to specify
       ]
     }
 
-The `pie-controller` will use the `score` information to set the score in the demo. Refresh `http://localhost:4000`, click the "demo" tab, click the toggle, change the view mode to 'evaluate', and you will see the score presented in the UI:
+The `pie-controller` will use the `score` information to set the score in the demo. On the page at `http://localhost:4000`, click the toggle, change the view mode to 'evaluate', and you will see the score presented in the UI:
 
 ![Score](images/score.png)
 
@@ -442,8 +447,15 @@ Now that the model contains a `feedback` field, we will need to update the `src/
       });
     }
 
-Refresh `http://localhost:4000`, click the "demo" tab, click the toggle, change the view mode to 'evaluate', and you will see the feedback presented in the UI:
+On the page `http://localhost:4000`, click the toggle, change the view mode to 'evaluate', and you will see the feedback presented in the UI:
 
 ![Feedback](images/feedback.png)
 
 [See the code here](https://github.com/PieLabs/pie-toggle/commit/448310d838722f44297f7d439dcd469963e4105e)
+
+
+### Debugging 
+
+When running `pie serve` The Element and Controller code for your PIE is transpiled and added to a file called `pie-item.js`. You can inspect this file with your browser debugger.
+
+> Coming Soon: The `pie-item.js` file is transpiled to ES5 from your sources. Source maps feature will be added to `pie serve` task, so your ES6 files can be inspected directly in a compatible debugger. 
