@@ -82,7 +82,10 @@ The example below renders a single `pie-player` with a client side controller. U
 
 ### Server Side Example
 
+
 In some cases, such as for secure test delivery, it is desirable to render items using a remote server to run the controller logic provided by the PIEs in an assessment item.  
+
+> Note: For a simple working example of a server implementation, see [this project](https://github.com/PieLabs/pie-remote-controller-demo)
 
 The example below renders a single `pie-player` with a remote controller.
 
