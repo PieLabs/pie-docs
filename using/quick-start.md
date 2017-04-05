@@ -19,10 +19,9 @@ In this example, we will use a sample assessment item definition to package and 
 
 Download these item definition files and save them in a directory on your system.
 
-> [config.json](demo-item/config.json)
+> <a download="config.json" href="https://raw.githubusercontent.com/PieLabs/pie-docs/master/using/demo-item/config.json" title="config.json">config.json</a>
 
-> [index.html](demo-item/index.html)
-
+> <a download="index.html" href="https://raw.githubusercontent.com/PieLabs/pie-docs/master/using/demo-item/index.html" title="index.html">index.html</a>
 
 
 ## Packaging the Example
