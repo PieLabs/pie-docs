@@ -1,0 +1,637 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>PIE Player API · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="rendering-items.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Using PIE Content
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="quick-start.html">
+            
+                <a href="quick-start.html">
+            
+                    
+                    Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="defining-items.html">
+            
+                <a href="defining-items.html">
+            
+                    
+                    Defining Items
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="packaging-items.html">
+            
+                <a href="packaging-items.html">
+            
+                    
+                    Packaging Items
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="rendering-items.html">
+            
+                <a href="rendering-items.html">
+            
+                    
+                    Rendering Items
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.5" data-path="pie-player-api.html">
+            
+                <a href="pie-player-api.html">
+            
+                    
+                    PIE Player API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    PIE Development
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../developing/summary.html">
+            
+                <a href="../developing/summary.html">
+            
+                    
+                    Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../developing/development.html">
+            
+                <a href="../developing/development.html">
+            
+                    
+                    Development
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../developing/custom-element.html">
+            
+                <a href="../developing/custom-element.html">
+            
+                    
+                    Custom Element
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../developing/controller.html">
+            
+                <a href="../developing/controller.html">
+            
+                    
+                    Controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../developing/packaging.html">
+            
+                <a href="../developing/packaging.html">
+            
+                    
+                    Packaging PIEs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../developing/environment.html">
+            
+                <a href="../developing/environment.html">
+            
+                    
+                    Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../developing/tutorial/development-tutorial.html">
+            
+                <a href="../developing/tutorial/development-tutorial.html">
+            
+                    
+                    Devlopment Tutorial
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Authoring Development
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../authoring/authoring.html">
+            
+                <a href="../authoring/authoring.html">
+            
+                    
+                    Development
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../authoring/uploader.html">
+            
+                <a href="../authoring/uploader.html">
+            
+                    
+                    Uploader API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../open-source-pies.html">
+            
+                <a href="../open-source-pies.html">
+            
+                    
+                    Open Source PIEs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../design-decisions.html">
+            
+                <a href="../design-decisions.html">
+            
+                    
+                    Design Decisions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >PIE Player API</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="pie-player">pie-player</h1>
+<blockquote>
+<p>Pre-release note: Some of these APIs are not finalized and not fully implemented. Will be finalized for release.</p>
+</blockquote>
+<h2 id="html">Html</h2>
+<h3 id="custom-element-">Custom Element <pie-player></pie-player></h3>
+<p>This element renders the pies.<br>It serves as the main access object for the api described below.</p>
+<pre><code>  &lt;pie-player id=&quot;my-player&quot;&gt;&lt;/pie-player&gt;
+</code></pre><h2 id="javascript-api">Javascript Api</h2>
+<h4 id="setter-env">Setter: <code>env</code></h4>
+<p>The player view mode can be set via the env.</p>
+<pre><code> player.env = {view:&apos;gather&apos;}
+</code></pre><h4 id="setter-session">Setter: <code>session</code></h4>
+<p>The various user inputs are collected in this object.<br>The pies can use the session to store session related data like the order of options for example.</p>
+<pre><code>  player.session = {value:[]}
+</code></pre><h4 id="setter-controller">Setter: <code>controller</code></h4>
+<p>The controller is used by the player to calculate model changes and outcomes.</p>
+<pre><code>  var config = ... //load json
+  player.controller = new pie.Controller(config.pies, pie.controllerMap);
+</code></pre><h4 id="method-completeresponse">Method: <code>completeResponse()</code></h4>
+<pre><code> /**
+  * Mark the current session as complete.
+  * @returns The method returns a Promise 
+  */
+  function completeResponse()
+</code></pre><h5 id="example">Example</h5>
+<pre><code>   player.completeResponse().then(function(){
+      var isComplete = player.isComplete();
+      console.log(isComplete) 
+   });
+
+   //output 
+   true
+</code></pre><h4 id="method-getoutcome">Method: <code>getOutcome()</code></h4>
+<pre><code>  /**
+   * Calculate the outcome for the current session.  
+   * @returns The method returns a Promise with the outcome 
+   */
+   function getOutcome()
+</code></pre><h5 id="example">Example</h5>
+<pre><code> player.getOutcome().then(function(outcome){
+    console.log(outcome);
+ });
+
+ //output
+ {
+    summary: { maxPoints: 7, points: 7, percentage: 100 },
+    pies: [
+       {id: &quot;01&quot;, score: {scaled: 1, min: 0, max:7, raw: 7}}
+    ] 
+ }
+</code></pre><h4 id="method-getsessionstatus">Method: <code>getSessionStatus()</code></h4>
+<pre><code>  /**
+   * Get the status of the session
+   * 1. allInteractionsHaveResponse: Boolean 
+   * 2. interactionCount: Number
+   * 3. interactionsWithResponseCount: Number
+   * 4. isComplete: Boolean
+   * @returns The method returns a Promise with the session status 
+   */
+   function getSessionStatus()
+</code></pre><h5 id="example">Example</h5>
+<pre><code>    player.getSessionStatus().then(function(sessionStatus){
+      console.log(sessionStatus);
+    });
+
+    //output
+    {
+      status: {
+        allInteractionsHaveResponse: true,
+        interactionCount: 2,
+        interactionsWithResponseCount: 2,
+        isComplete: true,
+      },
+      session: {...}
+    }
+</code></pre><h4 id="method-iscomplete">Method: <code>isComplete()</code></h4>
+<pre><code>  /**
+   * Is the session complete
+   * @returns The method returns a Promise with the value of isComplete 
+   */
+   function isComplete()
+</code></pre><h5 id="example">Example</h5>
+<pre><code>    player.isComplete().then(function(isComplete){
+      console.log(isComplete);
+    })
+
+    //output
+    false
+</code></pre><h4 id="method-reset">Method: <code>reset()</code></h4>
+<pre><code>  /**
+   * Reset the session, as if it is loaded for the first time.    
+   * This includes everything stored in the session, including stashed orders.
+   * @returns The method returns a Promise
+   */
+   function reset()
+</code></pre><h5 id="example">Example</h5>
+<pre><code>    player.reset().then(function(){
+       console.log(&quot;session has been reset&quot;);
+    });
+</code></pre><h4 id="method-resetresponse">Method: <code>resetResponse()</code></h4>
+<pre><code>  /**
+   * Reset all the changes a user has done to the interactions.   
+   * This is different from player.reset() in that it doesn&apos;t reset other things, 
+   * that have been stored in the session, eg. a random order of multiple choice options    
+   * @returns The method returns a Promise
+   */
+   function resetResponse()
+</code></pre><h5 id="example">Example</h5>
+<pre><code>    player.resetResponse().then(function(){
+       console.log(&quot;responses have been reset&quot;);
+    });
+</code></pre><h4 id="method-getlanguages">Method <code>getLanguages()</code></h4>
+<p>Return an array of languages available for the <a href="../GLOSSARY.html#assessment-item" class="glossary-term" title="An Assessment Item is one or several content, ui, question &amp; interaction elements configured by an author to present to a student.">assessment item</a>.
+Using this information a developer loading a PIE Item can decide to switch the language to the user&apos;s locale or offer buttons to do this. </p>
+<h3 id="events">Events</h3>
+<h4 id="event-pie-player-ready-bubblestrue">Event: <code>pie-player-ready</code> (bubbles=true)</h4>
+<p>This event is dispatched, when the api of a pie-player is ready to be used.   </p>
+<pre><code> document.addEventListener(&apos;pie-player-ready&apos;, function(){
+    var player = event.target;
+    player.env = env;
+    player.session = session;
+    player.controller = controller;
+    player.addEventListener(...)
+ });
+</code></pre><h4 id="event-response-change-bubblestrue">Event: <code>response-change</code> (bubbles=true)</h4>
+<p>The event is dispatched, whenever the status of the current response has changed, eg. when a question is loaded, when the user interacts with a question, when a session is reset.
+The event.detail contains a sessionStatus object    </p>
+<pre><code>  player.addEventListener(&apos;response-change&apos;, function(evt){
+     console.log(evt.detail.sessionStatus); 
+
+     //output
+      {
+        status: {
+          allInteractionsHaveResponse: true,
+          interactionCount: 2,
+          interactionsWithResponseCount: 2,
+          isComplete: true
+        },
+        session: {...}
+      }
+  });
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="rendering-items.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Rendering Items">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"PIE Player API","level":"1.2.5","depth":2,"next":{"title":"PIE Development","level":"1.3","depth":1,"ref":"","articles":[{"title":"Summary","level":"1.3.1","depth":2,"path":"developing/summary.md","ref":"developing/summary.md","articles":[]},{"title":"Development","level":"1.3.2","depth":2,"path":"developing/development.md","ref":"developing/development.md","articles":[]},{"title":"Custom Element","level":"1.3.3","depth":2,"path":"developing/custom-element.md","ref":"developing/custom-element.md","articles":[]},{"title":"Controller","level":"1.3.4","depth":2,"path":"developing/controller.md","ref":"developing/controller.md","articles":[]},{"title":"Packaging PIEs","level":"1.3.5","depth":2,"path":"developing/packaging.md","ref":"developing/packaging.md","articles":[]},{"title":"Environment","level":"1.3.6","depth":2,"path":"developing/environment.md","ref":"developing/environment.md","articles":[]},{"title":"Devlopment Tutorial","level":"1.3.7","depth":2,"path":"developing/tutorial/development-tutorial.md","ref":"developing/tutorial/development-tutorial.md","articles":[]}]},"previous":{"title":"Rendering Items","level":"1.2.4","depth":2,"path":"using/rendering-items.md","ref":"using/rendering-items.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"INTRODUCTION.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"facebook":false,"twitter":false}},"gitbook":"3.x.x"},"file":{"path":"using/pie-player-api.md","mtime":"2016-12-10T02:33:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-04-14T17:31:12.611Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
