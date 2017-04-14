@@ -35,8 +35,8 @@ PIE Framwork uses this as the entry point for the definition of a PIE's UI. It p
 Packaging interactive html5 based items for delivery is a fairly complex task. By providing a canonical packaging tool and transpilation support we can make this functionality readiliy available while also providing support for next-generation development practices that greatly simplify creation of question types, interactions and tools.
 
 - Development using ES6: This makes ES6 imports available, which when combined with NPM dependency resolution greatly facilitates development. It also affords the capability to implement tree-shacking packaging strategies to optimize the composition of transpiled/packaged items.
-- Support for LESS imports
-- Framework specific supports, to allow developers to use their framework of choice (Although component frameworks like react, inferno or view are the most optimal) and to make PIE future-ready, to support any new frameworks.
+- Support for CSS imports
+- Framework specific supports, to allow developers to use their framework of choice (Although component frameworks like React, Inferno or Vue are the most optimal) and to make PIE future-ready, to support any new frameworks.
 
 > Some of the features provided here will eventually be natively supported in browsers. The PIE cli can evolve to provide an optimum runtime package as standards evolve.
 

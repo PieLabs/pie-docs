@@ -13,10 +13,14 @@ We will be publishing a catalog of these PIEs, and also welcome submissions for 
 
 ## Example PIEs
 
-These PIEs are reference examples of best-practice PIEs.
+These PIEs are reference examples of PIEs.
 
 
 - [CoreSpring Choice - Single / Multi Choice Question Type](https://github.com/PieElements/corespring-choice)
 - [CoreSpring Placement Ordering - Drag and Drop Ordering Question Type](https://github.com/PieElements/corespring-placement-ordering)
+- [CoreSpring Matching](https://github.com/PieElements/corespring-match)
+- [CoreSpring Number Line](https://github.com/PieElements/corespring-number-line)
+
+
 
 >These are implemented using ES6 and the React Framework. CoreSpring will be gradually porting all or our question types to be implemented this way.

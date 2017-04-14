@@ -8,7 +8,7 @@
 
 
 
-Portable Interactions and Elements \(PIE\) is an Open Source framework for building , distributing and rendering re-usable UI elements, and interactions that can capture a user's response, analyze a user's response, and report an outcome and learning activity from the user interaction.
+Portable Interactions and Elements \(PIE\) is an Open Source framework for building, distributing and rendering re-usable UI elements and interactions that can capture a user's response, analyze a user's response, and report an outcome and learning activity from the user interaction.
 
 It supports the development of highly interactive questions and assessment interactions that can be shared and distributed to run on any web-based platform, fully preserving their design and functionality.
 
