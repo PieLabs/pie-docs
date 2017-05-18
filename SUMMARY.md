@@ -16,6 +16,11 @@
  - [Environment](developing/environment.md)
  - [Devlopment Tutorial](developing/tutorial/development-tutorial.md)
 
+- Authoring Development
+ - [Development](authoring/authoring.md) 
+ - [Uploader API](authoring/uploader.md)
+
+
 - [Open Source PIEs](open-source-pies.md)
 - [Design Decisions](design-decisions.md)
 
