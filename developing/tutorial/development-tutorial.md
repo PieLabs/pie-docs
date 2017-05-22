@@ -24,7 +24,7 @@ It would also be useful to set up a README at this point:
 
     touch README.md
 
-[See the code here](https://github.com/PieLabs/pie-toggle/commit/191fc3a4f29e282258b6df5582dfd40657c94822)
+[See the code here](https://github.com/PieLabs/pie-toggle/releases/tag/step-1)
 
 ### Creating a Custom Element
 
@@ -40,18 +40,14 @@ Fill out this file with the following code:
       
       constructor() {
         super();
-        this.innerHTML = [
-          '<div>',
-            "hello, world",
-          '</div>'
-        ].join('\n');
+        this.innerHTML = `<div> hello, world </div>`;
       }
 
     }
 
 This defines a simple web component with the content 'hello, world'.
 
-[See the code here](https://github.com/PieLabs/pie-toggle/commit/6bca8238da6f60e0303b990c104cced869513ca7)
+[See the code here](https://github.com/PieLabs/pie-toggle/releases/tag/step-2)
 
 ### Setting up demo code
 
@@ -104,7 +100,7 @@ Once the PIE is configured in the JSON, we'll need to define the markup for rend
 
 Once this is done, we have the base setup for our PIE.
 
-[See the code here](https://github.com/PieLabs/pie-toggle/commit/d26f76aecd752fe926912a680f904c8259990481)
+[See the code here](https://github.com/PieLabs/pie-toggle/releases/tag/step-3)
 
 ### Running the demo
 
@@ -131,7 +127,6 @@ First off, we will introduce logic so that our PIE manages state and provides ac
         super();
         this._model = null;
         this._session = null;
-        this._rerender();
       }
 
       set model(m) {
@@ -153,11 +148,7 @@ First off, we will introduce logic so that our PIE manages state and provides ac
       }
 
       _rerender() {
-        this.innerHTML = [
-          '<div>',
-            this._message(),
-          '</div>'
-        ].join('\n');
+        this.innerHTML = `<div>${this._message()}</div>`;
       }
 
       connectedCallback() {
@@ -213,7 +204,7 @@ Paste the following into the `controller/src/index.js` file:
 
 Now open `http://localhost:4000`, and you will see that the message has now been replaced with "hello, PIE".
 
-[See the code here](https://github.com/PieLabs/pie-toggle/commit/b7a20539d4a5168a0b2fdfb70841ffa1f2ad8b86)
+[See the code here](https://github.com/PieLabs/pie-toggle/releases/tag/step-4)
 
 ### Add some interactive elements
 
@@ -292,7 +283,6 @@ After this we'll import the `index.less` in our `index.js` file, and add some ma
         super();
         this._model = null;
         this._session = null;
-        this._rerender();
       }
 
       set model(m) {
@@ -315,14 +305,14 @@ After this we'll import the `index.less` in our `index.js` file, and add some ma
       _rerender() {
         let checked = this._session ? this._session.answer : false;
 
-        this.innerHTML = [
-          '<label class="switch">',
-            '<input type="checkbox" ', (checked ? 'checked=""' : ''), '>',
-            '<div class="slider round"></div>',
-          '</label>'
-        ].join('\n');
 
-        this.getElementsByTagName('input')[0].addEventListener('change', (e) => {
+        this.innerHTML = `
+        <label class="switch">
+          <input type="checkbox" ${checked ? 'checked=""' : ''}>
+          <div class="slider round"></div>
+        </label>`;
+        
+        this.querySelector('input').addEventListener('change', (e) => {
           this._session.answer = e.target.checked;
         });
       }
@@ -338,7 +328,7 @@ Note also that the `addEventListener` for changes on the `input` element will up
 
 ![Toggle](images/toggle.png)
 
-[See the code here](https://github.com/PieLabs/pie-toggle/commit/79ead40fb3e4dd25c9bd816a3f20cf98c41bc8a6)
+[See the code here](https://github.com/PieLabs/pie-toggle/releases/tag/step-5)
 
 ### Provide scoring from the controller
 
@@ -376,7 +366,7 @@ The `pie-controller` will use the `score` information to set the score in the de
 
 ![Score](images/score.png)
 
-[See the code here](https://github.com/PieLabs/pie-toggle/commit/0272f64187152f8ecf7c8ccfa2a2c26317593622)
+[See the code here](https://github.com/PieLabs/pie-toggle/releases/tag/step-6)
 
 ### Provide feedback from the controller
 
@@ -419,30 +409,20 @@ As you can see, the model function now looks to see if the view mode is set to `
 
 Now that the model contains a `feedback` field, we will need to update the `src/index.js` that renders the PIE in the UI to display this field to the user. Modify the `_rerender` function to look like this:
 
+
     _rerender() {
-      let feedback = (function(model) {
-        if (model && model.feedback) {
-          return [
-            "<div class='feedback'>",
-              model.feedback,
-            "</div>"
-          ].join('\n');
-        } else {
-          return "";
-        }
-      }(this._model));
+      let feedback = (model && model.feedback) ? `<div class="feedback">${model.feedback}</div>` : '';
 
       let checked = this._session ? this._session.answer : false;
 
-      this.innerHTML = [
-        '<label class="switch">',
-          '<input type="checkbox" ', (checked ? 'checked=""' : ''), '>',
-          '<div class="slider round"></div>',
-        '</label>',
-        feedback
-      ].join('\n');
+      this.innerHTML = `
+        <label class="switch">
+          <input type="checkbox" ${checked ? 'checked=""' : ''}>
+          <div class="slider round"></div>
+        </label>
+        ${feedback}`;
 
-      this.getElementsByTagName('input')[0].addEventListener('change', (e) => {
+      this.querySelector('input').addEventListener('change', (e) => {
         this._session.answer = e.target.checked;
       });
     }
@@ -451,7 +431,7 @@ On the page `http://localhost:4000`, click the toggle, change the view mode to '
 
 ![Feedback](images/feedback.png)
 
-[See the code here](https://github.com/PieLabs/pie-toggle/commit/448310d838722f44297f7d439dcd469963e4105e)
+[See the code here](https://github.com/PieLabs/pie-toggle/releases/tag/step-7)
 
 
 ### Debugging 
